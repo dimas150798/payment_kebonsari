@@ -105,9 +105,6 @@
 		$('#mytable').DataTable({
 			"autoFill": true,
 			"pagingType": 'numbers',
-			"aProcessing": true,
-			"aServerSide": true,
-			"ordering": false,
 			"searching": true,
 			"paging": true,
 			"stateSave": true,
