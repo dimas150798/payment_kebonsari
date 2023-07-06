@@ -13,7 +13,7 @@ class M_SudahLunas extends CI_Model
         data_pembayaran.order_id, data_pembayaran.gross_amount, data_pembayaran.biaya_admin, 
         data_pembayaran.nama_admin, data_pembayaran.nama, data_pembayaran.keterangan, data_pembayaran.payment_type, data_pembayaran.transaction_time, data_pembayaran.expired_date,
         data_pembayaran.bank, data_pembayaran.va_number, data_pembayaran.permata_va_number, data_pembayaran.payment_code, data_pembayaran.bill_key, 
-        data_pembayaran.biller_code, data_pembayaran.pdf_url, data_pembayaran.status_code, paket.name as nama_paket, paket.price as harga_paket
+        data_pembayaran.biller_code, data_pembayaran.pdf_url, data_pembayaran.status_code, data_pembayaran.paket as nama_paket, data_pembayaran.gross_amount as harga_paket
 
         FROM client
         LEFT JOIN paket ON client.id_paket = paket.id
@@ -22,7 +22,7 @@ class M_SudahLunas extends CI_Model
         AND MONTH(data_pembayaran.transaction_time) = '$bulan' AND YEAR(data_pembayaran.transaction_time) = '$tahun'
 
         WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
-        data_pembayaran.transaction_time IS NOT NULL
+        data_pembayaran.transaction_time IS NOT NULL AND client.stop_date IS NULL
 
         GROUP BY client.name_pppoe
         ORDER BY data_pembayaran.order_id DESC");
@@ -48,7 +48,7 @@ class M_SudahLunas extends CI_Model
         AND MONTH(data_pembayaran.transaction_time) = '$bulan' AND YEAR(data_pembayaran.transaction_time) = '$tahun'
 
         WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
-        data_pembayaran.transaction_time IS NOT NULL
+        data_pembayaran.transaction_time IS NOT NULL AND client.stop_date IS NULL
 
         GROUP BY client.name_pppoe
         ORDER BY DAY(client.start_date) ASC");
@@ -60,7 +60,7 @@ class M_SudahLunas extends CI_Model
     public function NominalSudahLunas($bulan, $tahun, $tanggalAkhir)
     {
         $result   = $this->db->query("SELECT 
-        SUM(paket.price) AS harga_paket
+        SUM(data_pembayaran.gross_amount) AS harga_paket
 
         FROM client
         LEFT JOIN paket ON client.id_paket = paket.id
@@ -68,7 +68,7 @@ class M_SudahLunas extends CI_Model
         AND MONTH(data_pembayaran.transaction_time) = '$bulan' AND YEAR(data_pembayaran.transaction_time) = '$tahun'
         
         WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir'
-        AND data_pembayaran.transaction_time IS NOT NULL AND  client.stop_date IS NULL");
+        AND data_pembayaran.transaction_time IS NOT NULL AND client.stop_date IS NULL");
 
         return $result->row();
         if ($result->num_rows() > 0) {
