@@ -31,6 +31,8 @@ class C_DashboardAdmin extends CI_Controller
         $checkKoneksi                   = $this->MikrotikModel->jumlahMikrotikAktif();
         $data['JumlahPelanggan']        = $this->M_Pelanggan->JumlahPelangganAktif();
         $data['JumlahPelangganBaru']    = $this->M_Pelanggan->JumlahPelangganBaru($bulan, $tahun);
+        $data['JumlahSudahLunas']       = $this->M_SudahLunas->JumlahSudahLunas($bulan, $tahun, $toDay);
+        $data['JumlahJatuhTempo']       = $this->M_JatuhTempo->JumlahJatuhTempo($toDay);
 
         // Memanggil data Mikrotik
         $this->MikrotikModel->index();

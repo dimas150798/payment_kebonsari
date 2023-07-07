@@ -165,7 +165,7 @@ if (!function_exists('changeDateFormat')) {
                                         <th width="20%">Nama</th>
                                         <th width="20%" class="text-center">Tanggal</th>
                                         <th width="20%" class="text-center">Paket</th>
-                                        <th width="20%" class="text-center">Tarif</th>
+                                        <th width="20%">Tarif</th>
                                         <th width="20%" class="text-center">Action</th>
                                     </tr>
                                 </thead>

@@ -16,7 +16,7 @@ class M_Pelanggan extends CI_Model
             LEFT JOIN sales ON client.id_sales = sales.id
             LEFT JOIN paket ON client.id_paket = paket.id
 
-            WHERE client.stop_date IS NULL
+            WHERE client.stop_date IS NULL 
             
             GROUP BY client.name_pppoe
             ORDER BY client.name_pppoe ASC");
@@ -38,7 +38,7 @@ class M_Pelanggan extends CI_Model
         LEFT JOIN sales ON client.id_sales = sales.id
         LEFT JOIN paket ON client.id_paket = paket.id
 
-        WHERE client.stop_date IS NULL
+        WHERE client.stop_date IS NULL 
         
         GROUP BY client.name_pppoe
         ORDER BY client.name_pppoe ASC");
