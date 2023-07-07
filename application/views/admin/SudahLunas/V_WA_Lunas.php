@@ -69,7 +69,7 @@ if (!function_exists('changeDateFormat')) {
                                     </div>
                                     <div class="col-sm-4 mt-3">
                                         <label for="" class="form-label" style="font-weight: bold;"> Paket : <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="" value="<?php echo $data['nama_paket'] ?> / Rp.  <?php echo number_format($data['harga_paket'] + $data['biaya_admin'], 0, ',', '.') ?>" placeholder="Data Kosong" readonly>
+                                        <input type="text" class="form-control" name="" value="<?php echo $data['nama_paket'] ?> / Rp.  <?php echo number_format($data['harga_paket'], 0, ',', '.') ?>" placeholder="Data Kosong" readonly>
                                     </div>
                                 </div>
 
