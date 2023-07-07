@@ -28,7 +28,7 @@
                                 <div class="row">
                                     <input type="hidden" class="form-control" name="id" value="<?php echo $data['id'] ?>" readonly>
                                     <input type="hidden" class="form-control" name="id_pppoe" value="<?php echo $data['id_pppoe'] ?>" readonly>
-                                    <input type="hidden" class="form-control" name="nama_paket" value="<?php echo $data['namaPaket'] ?>" readonly>
+                                    <input type="hidden" class="form-control" name="nama_paket" value="<?php echo $data['nama_paket'] ?>" readonly>
                                     <input type="hidden" class="form-control" name="gross_amount" value="<?php echo $data['harga_paket'] ?>">
                                 </div>
 
