@@ -33,6 +33,8 @@ class C_ExportExcel extends CI_Controller
 
     public function index()
     {
+        date_default_timezone_set("Asia/Jakarta");
+
         $data = $this->M_Pelanggan->DataPelanggan();
 
         /* Spreadsheet Init */

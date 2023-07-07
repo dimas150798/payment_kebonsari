@@ -32,6 +32,8 @@ class C_EditPelanggan extends CI_Controller
 
     public function EditPelangganSave()
     {
+        date_default_timezone_set("Asia/Jakarta");
+
         // Mengambil data post pada view
         $id_pppoe               = $this->input->post('id_pppoe');
         $id                     = $this->input->post('id');

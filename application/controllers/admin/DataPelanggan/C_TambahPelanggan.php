@@ -32,6 +32,8 @@ class C_TambahPelanggan extends CI_Controller
 
     public function TambahPelangganSave()
     {
+        date_default_timezone_set("Asia/Jakarta");
+
         // Mengambil data post pada view
         $order_id               = $this->input->post('order_id');
         $code_client            = $this->input->post('code_client');

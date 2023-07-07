@@ -36,6 +36,8 @@ class C_PayBelumLunas extends CI_Controller
 
     public function PaymentSave()
     {
+        date_default_timezone_set("Asia/Jakarta");
+
         // Mengambil data post pada view
         $id_pppoe               = $this->input->post('id_pppoe');
         $id                     = $this->input->post('id');

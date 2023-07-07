@@ -32,6 +32,8 @@ class C_TambahTerminated extends CI_Controller
 
     public function TerminatedPelangganSave()
     {
+        date_default_timezone_set("Asia/Jakarta");
+
         // Mengambil data post pada view
         $id                     = $this->input->post('id');
         $stop_date              = $this->input->post('stop_date');
