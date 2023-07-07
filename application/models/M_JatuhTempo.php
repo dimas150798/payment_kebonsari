@@ -195,7 +195,7 @@ class M_JatuhTempo extends CI_Model
             $no         = "0001";
         }
 
-        $invoice = "INT" . date('ym') . $no;
+        $invoice = "IN7" . date('ym') . $no;
         return $invoice;
     }
 
