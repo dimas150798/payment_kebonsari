@@ -38,7 +38,7 @@ class C_PayJatuhTempo extends CI_Controller
     {
         // Mengambil data post pada view
         $id_pppoe               = $this->input->post('id_pppoe');
-        $id_customer            = $this->input->post('id_customer');
+        $id                     = $this->input->post('id');
         $nama_paket             = $this->input->post('nama_paket');
         $gross_amount           = $this->input->post('gross_amount');
         $order_id               = $this->input->post('order_id');
@@ -58,8 +58,8 @@ class C_PayJatuhTempo extends CI_Controller
             'order_id'          => $order_id,
             'gross_amount'      => $gross_amount,
             'biaya_admin'       => $biaya_admin,
-            'name_pppoe'        => $name_pppoe,
-            'nama_paket'        => $nama_paket,
+            'nama'              => $name_pppoe,
+            'paket'             => $nama_paket,
             'nama_admin'        => $nama_admin,
             'keterangan'        => $keterangan,
             'transaction_time'  => $transaction_time,
@@ -68,7 +68,7 @@ class C_PayJatuhTempo extends CI_Controller
         );
 
         // Memanggil mysql dari model
-        $data['DataPelanggan']  = $this->M_JatuhTempo->Payment($id_customer);
+        $data['DataPelanggan']  = $this->M_JatuhTempo->Payment($id);
         $checkDuplicatePay      = $this->M_JatuhTempo->CheckDuplicatePayment($explode[1], $explode[0], $name_pppoe);
 
         // Rules form validation

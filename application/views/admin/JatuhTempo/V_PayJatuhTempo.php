@@ -26,7 +26,7 @@
                             <form method="POST" action="<?php echo base_url('admin/JatuhTempo/C_PayJatuhTempo/PaymentSave') ?>">
 
                                 <div class="row">
-                                    <input type="hidden" class="form-control" name="id_customer" value="<?php echo $data['id_customer'] ?>" readonly>
+                                    <input type="hidden" class="form-control" name="id" value="<?php echo $data['id'] ?>" readonly>
                                     <input type="hidden" class="form-control" name="id_pppoe" value="<?php echo $data['id_pppoe'] ?>" readonly>
                                     <input type="hidden" class="form-control" name="nama_paket" value="<?php echo $data['namaPaket'] ?>" readonly>
                                     <input type="hidden" class="form-control" name="gross_amount" value="<?php echo $data['harga_paket'] ?>">
@@ -38,8 +38,8 @@
                                         <input type="text" class="form-control" name="order_id" id="order_id" value="<?php echo $this->M_JatuhTempo->invoice() ?>" readonly>
                                     </div>
                                     <div class="col-sm-3 mt-3">
-                                        <label for="nama_customer" class="form-label" style="font-weight: bold;"> Nama Customer : <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="nama_customer" id="nama_customer" value="<?php echo $data['nama_customer'] ?>" readonly>
+                                        <label for="name" class="form-label" style="font-weight: bold;"> Nama Customer : <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="name" id="name" value="<?php echo $data['name'] ?>" readonly>
 
                                     </div>
                                     <div class="col-sm-3 mt-3">
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="col-sm-3 mt-3">
                                         <label for="" class="form-label" style="font-weight: bold;"> Paket : <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="" id="" value="<?php echo $data['namaPaket'] ?> / Rp. <?php echo number_format($data['harga_paket'], 0, ',', '.') ?> + PPN" readonly>
+                                        <input type="text" class="form-control" name="" id="" value="<?php echo $data['nama_paket'] ?> / Rp. <?php echo number_format($data['harga_paket'], 0, ',', '.') ?> + PPN" readonly>
                                     </div>
                                 </div>
 

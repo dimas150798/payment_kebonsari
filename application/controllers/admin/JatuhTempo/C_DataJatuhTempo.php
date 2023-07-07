@@ -82,8 +82,8 @@ class C_DataJatuhTempo extends CI_Controller
                         Opsi
                     </button>
                     <div class="dropdown-menu text-black" style="background-color:aqua;">
-                        <a onclick="PaymentJatuhTempo(' . $dataCustomer['id_customer'] . ')"class="dropdown-item text-black"></i> Lunasi Pelanggan</a>
-                        <a onclick="KirimWAJatuhTempo(' . $dataCustomer['id_customer'] . ')"class="dropdown-item text-black"></i> Kirim Tagihan</a>
+                        <a onclick="PaymentJatuhTempo(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"></i> Lunasi Pelanggan</a>
+                        <a onclick="KirimWAJatuhTempo(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"></i> Kirim Tagihan</a>
                     </div>
                 </div>
                 </div>';
