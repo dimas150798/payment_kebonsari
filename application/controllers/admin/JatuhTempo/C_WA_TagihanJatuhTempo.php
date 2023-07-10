@@ -27,7 +27,8 @@ class C_WA_TagihanJatuhTempo extends CI_Controller
 
         $data['tahun']          = $pecahDay[0];
         $data['bulan']          = str_split($pecahDay[1]);
-        $tanggal['tanggal']     = $pecahDay[2];
+        $data['tanggal']     = $pecahDay[2];
+
 
         //memanggil mysql dari model 
         $data['DataPelanggan']  = $this->M_BelumLunas->Payment($id_customer);
