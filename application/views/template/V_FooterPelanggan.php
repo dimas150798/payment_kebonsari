@@ -196,12 +196,14 @@
 			"searching": true,
 			"paging": true,
 			"stateSave": true,
+			"processing": true,
+			"serverside": true,
 			"ajax": {
 				"url": "<?= base_url('admin/DataPelanggan/C_DataPelanggan/GetDataAjax'); ?>",
 			},
-
 		})
 	})
+	
 </script>
 
 <!-- Delete Data Pelanggan -->

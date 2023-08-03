@@ -23,7 +23,7 @@
 
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css" />
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/dataTables.semanticui.min.css" />
-
+	
 	<!-- Font  -->
 	<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
@@ -37,6 +37,7 @@
 
 	<!-- SweetAlert2 -->
 	<link href="<?php echo base_url(); ?>vendor/SweetAlert2/sweetalert2.min.css" rel="stylesheet" />
+
 
 
 </head>

@@ -41,7 +41,7 @@ class C_DataPelanggan extends CI_Controller
         $this->load->view('admin/DataPelanggan/V_DataPelanggan', $data);
         $this->load->view('template/V_FooterPelanggan', $data);
     }
-
+    
     public function GetDataAjax()
     {
         $result = $this->M_Pelanggan->DataPelanggan();

@@ -2,11 +2,9 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_FormLogin extends CI_Controller
-{
+class C_FormLogin extends CI_Controller {
 
-    public function index()
-    {
+    public function index() {
         $this->form_validation->set_rules('email_login', 'email_login', 'required');
         $this->form_validation->set_rules('password_login', 'password_login', 'required');
         $this->form_validation->set_message('required', 'Masukan data terlebih dahulu');
@@ -18,11 +16,11 @@ class C_FormLogin extends CI_Controller
             $this->load->view('template/footerLogin');
         } else {
             // mengambil data dari view post
-            $email_login        = $this->input->post('email_login');
-            $password_login     = $this->input->post('password_login');
+            $email_login = $this->input->post('email_login');
+            $password_login = $this->input->post('password_login');
 
-            // pengecheckan data login 
-            $checkDataLogin     = $this->M_Login->CheckLogin($email_login, $password_login);
+            // pengecheckan data login
+            $checkDataLogin = $this->M_Login->CheckLogin($email_login, $password_login);
 
             if ($checkDataLogin == NULL) {
                 // Notifikasi gagal login
@@ -60,56 +58,54 @@ class C_FormLogin extends CI_Controller
         }
     }
 
-    public function TerminasiAuto()
-    {
+    public function TerminasiAuto() {
         date_default_timezone_set("Asia/Jakarta");
         // Menampilkan tanggal sekarang
-        $toDay          = date('Y-m-d');
+        $toDay = date('Y-m-d');
 
         // Memisahkan Tanggal
-        $pecahDay       = explode("-", $toDay);
+        $pecahDay = explode("-", $toDay);
 
-        $tahun          = $pecahDay[0];
-        $bulan          = $pecahDay[1];
-        $tanggal        = $pecahDay[2];
+        $tahun = $pecahDay[0];
+        $bulan = $pecahDay[1];
+        $tanggal = $pecahDay[2];
 
         // Menampilkan tanggal pada akhir bulan
-        $tanggal_akhir              = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
+        $tanggal_akhir = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
 
         // Menggabungkan tanggal, bulan, tahun
-        $TanggalAkhir               = $tahun . '-' . $bulan . '-' . $tanggal_akhir;
+        $TanggalAkhir = $tahun . '-' . $bulan . '-' . $tanggal_akhir;
 
-        $data['dataTerminasi']      = $this->MikrotikModel->TerminasiAuto($bulan, $tahun, $TanggalAkhir, $tanggal);
+        $data['dataTerminasi'] = $this->MikrotikModel->TerminasiAuto($bulan, $tahun, $TanggalAkhir, $tanggal);
 
-        $data['bulan']              = $bulan;
-        $data['tahun']              = $tahun;
+        $data['bulan'] = $bulan;
+        $data['tahun'] = $tahun;
 
         // $this->load->view('template/header', $data);
         // $this->load->view('V_TerminasiAuto', $data);
         // $this->load->view('template/V_FooterTerminasiAuto', $data);
     }
 
-    public function GetTerminasiAuto()
-    {
+    public function GetTerminasiAuto() {
         date_default_timezone_set("Asia/Jakarta");
         $toDay = date('Y-m-d');
 
         // Memisahkan Tanggal
-        $pecahDay       = explode("-", $toDay);
+        $pecahDay = explode("-", $toDay);
 
-        $tahun          = $pecahDay[0];
-        $bulan          = $pecahDay[1];
-        $tanggal        = $pecahDay[2];
+        $tahun = $pecahDay[0];
+        $bulan = $pecahDay[1];
+        $tanggal = $pecahDay[2];
 
         // Menampilkan tanggal pada awal bulan
-        $tanggal_awal     = date("01");
+        $tanggal_awal = date("01");
         // Menampilkan tanggal pada akhir bulan
-        $tanggal_akhir    = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
+        $tanggal_akhir = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
         // Menggabungkan bulan dan tahun
-        $TanggalAwal      = $tahun . '-' . $bulan . '-' . $tanggal_awal;
-        $TanggalAkhir     = $tahun . '-' . $bulan . '-' . $tanggal_akhir;
+        $TanggalAwal = $tahun . '-' . $bulan . '-' . $tanggal_awal;
+        $TanggalAkhir = $tahun . '-' . $bulan . '-' . $tanggal_akhir;
 
-        $result        = $this->MikrotikModel->TerminasiAuto($bulan, $tahun, $TanggalAkhir);
+        $result = $this->MikrotikModel->TerminasiAuto($bulan, $tahun, $TanggalAkhir);
 
         $no = 0;
 
@@ -128,20 +124,17 @@ class C_FormLogin extends CI_Controller
         }
 
         $ouput = array(
-            'data' => $data
+            'data' => $data,
         );
 
         $this->output->set_content_type('application/json')->set_output(json_encode($ouput));
     }
 
-    public function insertCustomer()
-    {
+    public function insertCustomer() {
         $this->MikrotikModel->index();
     }
 
-
-    public function logout()
-    {
+    public function logout() {
         session_start();
         session_destroy();
 

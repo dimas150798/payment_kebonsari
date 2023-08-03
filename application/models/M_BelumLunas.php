@@ -105,6 +105,25 @@ class M_BelumLunas extends CI_Model
         return $invoice;
     }
 
+    public function invoiceDuplicate()
+    {
+        $sql = "SELECT MAX(MID(order_id,8,4)) AS invoiceID 
+        FROM data_pembayaran
+        WHERE MID(order_id,4,4) = DATE_FORMAT(CURDATE(), '%y%m')";
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0) {
+            $dataRow    = $query->row();
+            $dataN      = ((int)$dataRow->invoiceID) + 2;
+            $no         = sprintf("%'.04d", $dataN);
+        } else {
+            $no         = "0001";
+        }
+
+        $invoice = "IN7" . date('ym') . $no;
+        return $invoice;
+    }
+
     // Pembayaran Pelanggan
     public function Payment($id_customer)
     {

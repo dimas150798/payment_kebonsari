@@ -129,6 +129,24 @@ class M_Pelanggan extends CI_Model
         }
     }
 
+    // Check data code client
+    public function CheckDuplicateCode($code_client)
+    {
+        $this->db->select('name, id_pppoe, name_pppoe, code_client');
+        $this->db->where('code_client', $code_client);
+
+        $this->db->limit(1);
+        $result = $this->db->get('client');
+
+        return $result->row();
+        if ($result->num_rows() > 0) {
+            return $result->row();
+        } else {
+            return false;
+        }
+    }
+    
+
     // Invoice payment
     public function kodePelanggan()
     {
