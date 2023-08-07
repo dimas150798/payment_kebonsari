@@ -127,7 +127,7 @@ class C_TambahPelanggan extends CI_Controller {
         $checkDuplicate = $this->M_Pelanggan->CheckDuplicatePelanggan($name_pppoe);
 
         // Check duplicate code
-        $checkDuplicateCode = $this->M_Pelanggan->CheckDuplicateCode($code_client);
+        $checkDuplicateCode = $this->M_Pelanggan->CheckDuplicateCode($order_id);
 
 
         // Rules form validation
@@ -158,7 +158,7 @@ class C_TambahPelanggan extends CI_Controller {
 
                 redirect('admin/DataPelanggan/C_TambahPelanggan');
             } else {
-                if($code_client != $checkDuplicateCode->code_client) {
+                if($order_id != $checkDuplicateCode->order_id) {
                     $this->M_CRUD->insertData($dataPelanggan, 'client');
                     $this->M_CRUD->insertData($dataPembayaran, 'data_pembayaran');
                     $this->M_CRUD->insertData($dataPembayaran, 'data_pembayaran_history');

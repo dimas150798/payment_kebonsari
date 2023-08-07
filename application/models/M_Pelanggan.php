@@ -130,13 +130,13 @@ class M_Pelanggan extends CI_Model
     }
 
     // Check data code client
-    public function CheckDuplicateCode($code_client)
+    public function CheckDuplicateCode($code_invoice)
     {
-        $this->db->select('name, id_pppoe, name_pppoe, code_client');
-        $this->db->where('code_client', $code_client);
+        $this->db->select('order_id, nama');
+        $this->db->where('order_id', $code_invoice);
 
         $this->db->limit(1);
-        $result = $this->db->get('client');
+        $result = $this->db->get('data_pembayaran');
 
         return $result->row();
         if ($result->num_rows() > 0) {
