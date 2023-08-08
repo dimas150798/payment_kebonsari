@@ -61,3 +61,10 @@ $('#nama_sales').each(function() {
         dropdownParent: $(this).parent(),
     });
 });
+$('#biaya_instalasi').each(function() {
+    $(this).select2({
+        placeholder: 'Pilih Biaya :',
+        theme: 'bootstrap-5',
+        dropdownParent: $(this).parent(),
+    });
+});

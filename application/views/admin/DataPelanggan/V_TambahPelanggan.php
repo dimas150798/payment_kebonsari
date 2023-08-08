@@ -79,7 +79,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-4 mt-3">
+                                <div class="col-sm-2 mt-3">
                                     <label for="id_paket" class="form-label" style="font-weight: bold;"> Paket : <span class="text-danger">*</span></label>
                                     <select id="id_paket" name="id_paket" class="form-control" required>
                                         <option value="">Pilih Paket :</option>
@@ -92,6 +92,15 @@
                                     <div class="bg-danger">
                                         <small class="text-white"><?php echo form_error('id_paket'); ?></small>
                                     </div>
+                                </div>
+                                <div class="col-sm-2 mt-3">
+                                    <label for="biaya_instalasi" class="form-label" style="font-weight: bold;"> Biaya Instalasi : <span class="text-danger">*</span></label>
+                                    <select id="biaya_instalasi" name="biaya_instalasi" class="form-control" required>
+                                        <option value="">--- Pilih Biaya ---</optxion>
+                                        <option value="0">Rp. 0</option>
+                                        <option value="100000">Rp. 100.000</option>
+                                        <option value="200000">Rp. 200.000</option>
+                                    </select>
                                 </div>
                                 <div class="col-sm-4 mt-3">
                                     <label for="id_area" class="form-label" style="font-weight: bold;"> Kode DP dan Area : <span class="text-danger">*</span></label>

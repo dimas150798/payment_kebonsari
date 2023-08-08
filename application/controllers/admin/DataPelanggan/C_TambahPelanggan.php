@@ -2,8 +2,10 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_TambahPelanggan extends CI_Controller {
-    public function __construct() {
+class C_TambahPelanggan extends CI_Controller
+{
+    public function __construct()
+    {
         parent::__construct();
         if ($this->session->userdata('email') == null) {
 
@@ -15,7 +17,8 @@ class C_TambahPelanggan extends CI_Controller {
         }
     }
 
-    public function index() {
+    public function index()
+    {
         // Memanggil mysql dari model
         $data['DataPaket'] = $this->M_Paket->DataPaket();
         $data['DataArea'] = $this->M_Area->DataArea();
@@ -27,7 +30,8 @@ class C_TambahPelanggan extends CI_Controller {
         $this->load->view('template/V_FooterPelanggan', $data);
     }
 
-    public function TambahPelangganSave() {
+    public function TambahPelangganSave()
+    {
         date_default_timezone_set("Asia/Jakarta");
 
         // Mengambil data post pada view
@@ -44,6 +48,7 @@ class C_TambahPelanggan extends CI_Controller {
         $id_area = $this->input->post('id_area');
         $description = $this->input->post('description');
         $id_sales = $this->input->post('id_sales');
+        $biaya_instalasi = $this->input->post('biaya_instalasi');
 
         $GetDataPaket = $this->M_Paket->GetDataPaket($id_paket);
 
@@ -98,6 +103,7 @@ class C_TambahPelanggan extends CI_Controller {
             'order_id'         => $order_id,
             'gross_amount'     => $price_paket,
             'biaya_admin'      => '0',
+            'biaya_instalasi'  => $biaya_instalasi,
             'nama'             => $name_pppoe,
             'paket'            => $name_paket,
             'nama_admin'       => 'Admin Infly',
@@ -110,6 +116,7 @@ class C_TambahPelanggan extends CI_Controller {
             'order_id'         => $this->M_BelumLunas->invoice(),
             'gross_amount'     => $price_paket,
             'biaya_admin'      => '0',
+            'biaya_instalasi'  => $biaya_instalasi,
             'nama'             => $name_pppoe,
             'paket'            => $name_paket,
             'nama_admin'       => 'Admin Infly',
@@ -158,11 +165,11 @@ class C_TambahPelanggan extends CI_Controller {
 
                 redirect('admin/DataPelanggan/C_TambahPelanggan');
             } else {
-                if($order_id != $checkDuplicateCode->order_id) {
+                if ($order_id != $checkDuplicateCode->order_id) {
                     $this->M_CRUD->insertData($dataPelanggan, 'client');
                     $this->M_CRUD->insertData($dataPembayaran, 'data_pembayaran');
                     $this->M_CRUD->insertData($dataPembayaran, 'data_pembayaran_history');
-    
+
                     // Tambah Pelanggan Ke Mikrotik
                     $api = connect();
                     $api->comm('/ppp/secret/add', [
@@ -173,20 +180,20 @@ class C_TambahPelanggan extends CI_Controller {
                         "comment"  => "",
                     ]);
                     $api->disconnect();
-    
+
                     // Memanggil data Mikrotik
                     $this->MikrotikModel->index();
-    
+
                     // Notifikasi Tambah Data Berhasil
                     $this->session->set_flashdata('Tambah_icon', 'success');
                     $this->session->set_flashdata('Tambah_title', 'Tambah Data Berhasil');
-    
+
                     redirect('admin/DataPelanggan/C_DataPelanggan');
-                }else{
+                } else {
                     $this->M_CRUD->insertData($dataPelangganDuplicate, 'client');
                     $this->M_CRUD->insertData($dataPembayaranDuplicate, 'data_pembayaran');
                     $this->M_CRUD->insertData($dataPembayaranDuplicate, 'data_pembayaran_history');
-    
+
                     // Tambah Pelanggan Ke Mikrotik
                     $api = connect();
                     $api->comm('/ppp/secret/add', [
@@ -197,14 +204,14 @@ class C_TambahPelanggan extends CI_Controller {
                         "comment"  => "",
                     ]);
                     $api->disconnect();
-    
+
                     // Memanggil data Mikrotik
                     $this->MikrotikModel->index();
-    
+
                     // Notifikasi Tambah Data Berhasil
                     $this->session->set_flashdata('Tambah_icon', 'success');
                     $this->session->set_flashdata('Tambah_title', 'Tambah Data Berhasil');
-    
+
                     redirect('admin/DataPelanggan/C_DataPelanggan');
                 }
             }
