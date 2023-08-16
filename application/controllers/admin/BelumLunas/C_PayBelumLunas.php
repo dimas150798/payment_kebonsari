@@ -67,6 +67,7 @@ class C_PayBelumLunas extends CI_Controller
             'transaction_time'  => $transaction_time,
             'expired_date'      => $transaction_time,
             'status_code'       => 200,
+            'created_at'        => date('Y-m-d H:i:s', time())
         );
 
         $dataPaymentDuplicate = array(
@@ -80,6 +81,7 @@ class C_PayBelumLunas extends CI_Controller
             'transaction_time'  => $transaction_time,
             'expired_date'      => $transaction_time,
             'status_code'       => 200,
+            'created_at'        => date('Y-m-d H:i:s', time())
         );
 
         // Memanggil mysql dari model
@@ -102,13 +104,13 @@ class C_PayBelumLunas extends CI_Controller
             $this->load->view('admin/BelumLunas/V_PayBelumLunas', $data);
             $this->load->view('template/V_FooterBelumLunas', $data);
         } else {
-            if($order_id != $checkDuplicateCode->order_id) {
+            if ($order_id != $checkDuplicateCode->order_id) {
                 if ($checkDuplicatePay->bulan_payment == $explode[1] && $checkDuplicatePay->tahun_payment == $explode[0] && $checkDuplicatePay->name_pppoe == $name_pppoe) {
                     // Notifikasi duplicate payment
                     $this->session->set_flashdata('DuplicatePay_icon', 'error');
                     $this->session->set_flashdata('DuplicatePay_title', 'Payment Gagal');
                     $this->session->set_flashdata('DuplicatePay_text', 'Customer sudah melakukan <br> Pembayaran bulan ini');
-    
+
                     echo "
                     <script>history.go(-1);            
                     </script>
@@ -117,26 +119,26 @@ class C_PayBelumLunas extends CI_Controller
                     // Notifikasi Login Berhasil
                     $this->session->set_flashdata('payment_icon', 'success');
                     $this->session->set_flashdata('payment_title', 'Pembayaran An. <b>' . $name_pppoe . '</b> Berhasil');
-    
+
                     $this->M_CRUD->insertData($dataPayment, 'data_pembayaran');
                     $this->M_CRUD->insertData($dataPayment, 'data_pembayaran_history');
-    
+
                     $api = connect();
                     $api->comm('/ppp/secret/set', [
                         ".id" => $id_pppoe,
                         "disabled" => 'false',
                     ]);
                     $api->disconnect();
-    
+
                     redirect('admin/BelumLunas/C_BelumLunas');
                 }
-            }else{
+            } else {
                 if ($checkDuplicatePay->bulan_payment == $explode[1] && $checkDuplicatePay->tahun_payment == $explode[0] && $checkDuplicatePay->name_pppoe == $name_pppoe) {
                     // Notifikasi duplicate payment
                     $this->session->set_flashdata('DuplicatePay_icon', 'error');
                     $this->session->set_flashdata('DuplicatePay_title', 'Payment Gagal');
                     $this->session->set_flashdata('DuplicatePay_text', 'Customer sudah melakukan <br> Pembayaran bulan ini');
-    
+
                     echo "
                     <script>history.go(-1);            
                     </script>
@@ -145,17 +147,17 @@ class C_PayBelumLunas extends CI_Controller
                     // Notifikasi Login Berhasil
                     $this->session->set_flashdata('payment_icon', 'success');
                     $this->session->set_flashdata('payment_title', 'Pembayaran An. <b>' . $name_pppoe . '</b> Berhasil');
-    
+
                     $this->M_CRUD->insertData($dataPaymentDuplicate, 'data_pembayaran');
                     $this->M_CRUD->insertData($dataPaymentDuplicate, 'data_pembayaran_history');
-    
+
                     $api = connect();
                     $api->comm('/ppp/secret/set', [
                         ".id" => $id_pppoe,
                         "disabled" => 'false',
                     ]);
                     $api->disconnect();
-    
+
                     redirect('admin/BelumLunas/C_BelumLunas');
                 }
             }

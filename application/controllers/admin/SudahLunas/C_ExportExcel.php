@@ -142,7 +142,8 @@ class C_ExportExcel extends CI_Controller
         $sheet->setCellValue('E4', 'Paket');
         $sheet->setCellValue('F4', 'Biaya Paket');
         $sheet->setCellValue('G4', 'Biaya Admin');
-        $sheet->setCellValue('H4', 'Keterangan');
+        $sheet->setCellValue('H4', 'Biaya Instalasi');
+        $sheet->setCellValue('I4', 'Keterangan');
 
         // Merubah huruf
         $spreadsheet->getDefaultStyle()->getFont()->setName('Times New Roman');
@@ -156,6 +157,7 @@ class C_ExportExcel extends CI_Controller
         $spreadsheet->getActiveSheet()->getStyle('F4')->applyFromArray($styleHeader);
         $spreadsheet->getActiveSheet()->getStyle('G4')->applyFromArray($styleHeader);
         $spreadsheet->getActiveSheet()->getStyle('H4')->applyFromArray($styleHeader);
+        $spreadsheet->getActiveSheet()->getStyle('I4')->applyFromArray($styleHeader);
 
         // Merubah ukuran font
         $spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(14);
@@ -166,6 +168,7 @@ class C_ExportExcel extends CI_Controller
         $spreadsheet->getActiveSheet()->getStyle('F4')->getFont()->setSize(14);
         $spreadsheet->getActiveSheet()->getStyle('G4')->getFont()->setSize(14);
         $spreadsheet->getActiveSheet()->getStyle('H4')->getFont()->setSize(14);
+        $spreadsheet->getActiveSheet()->getStyle('I4')->getFont()->setSize(14);
 
         // merubah ukuran border
         $spreadsheet->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
@@ -176,6 +179,7 @@ class C_ExportExcel extends CI_Controller
         $spreadsheet->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
         $spreadsheet->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
         $spreadsheet->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
+        $spreadsheet->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
 
         /* Excel Data */
         $row_number = 5;
@@ -187,7 +191,8 @@ class C_ExportExcel extends CI_Controller
             $sheet->setCellValue('E' . $row_number, strtoupper($row['nama_paket']));
             $sheet->setCellValue('F' . $row_number, $row['gross_amount']);
             $sheet->setCellValue('G' . $row_number, $row['biaya_admin']);
-            $sheet->setCellValue('H' . $row_number, strtoupper($row['keterangan']));
+            $sheet->setCellValue('H' . $row_number, $row['biaya_instalasi']);
+            $sheet->setCellValue('I' . $row_number, strtoupper($row['keterangan']));
 
             $spreadsheet->getActiveSheet()->getStyle('A' . $row_number)->applyFromArray($styleTables);
             $spreadsheet->getActiveSheet()->getStyle('B' . $row_number)->applyFromArray($styleTables);
@@ -197,10 +202,12 @@ class C_ExportExcel extends CI_Controller
             $spreadsheet->getActiveSheet()->getStyle('F' . $row_number)->applyFromArray($styleTables);
             $spreadsheet->getActiveSheet()->getStyle('G' . $row_number)->applyFromArray($styleTables);
             $spreadsheet->getActiveSheet()->getStyle('H' . $row_number)->applyFromArray($styleTables);
+            $spreadsheet->getActiveSheet()->getStyle('I' . $row_number)->applyFromArray($styleTables);
 
             // Convert nominal indonesia
             $spreadsheet->getActiveSheet()->getStyle('F' . $row_number)->getNumberFormat()->setFormatCode('#,##0');
             $spreadsheet->getActiveSheet()->getStyle('G' . $row_number)->getNumberFormat()->setFormatCode('#,##0');
+            $spreadsheet->getActiveSheet()->getStyle('H' . $row_number)->getNumberFormat()->setFormatCode('#,##0');
 
             // Merubah ukuran font
             $spreadsheet->getActiveSheet()->getStyle('A' . $row_number)->getFont()->setSize(12);
@@ -211,6 +218,7 @@ class C_ExportExcel extends CI_Controller
             $spreadsheet->getActiveSheet()->getStyle('F' . $row_number)->getFont()->setSize(12);
             $spreadsheet->getActiveSheet()->getStyle('G' . $row_number)->getFont()->setSize(12);
             $spreadsheet->getActiveSheet()->getStyle('H' . $row_number)->getFont()->setSize(12);
+            $spreadsheet->getActiveSheet()->getStyle('I' . $row_number)->getFont()->setSize(12);
 
             $row_number++;
         }
