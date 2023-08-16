@@ -138,7 +138,7 @@ class C_ExportExcel extends CI_Controller
         $sheet->setCellValue('A4', 'No');
         $sheet->setCellValue('B4', 'Invoice Payment');
         $sheet->setCellValue('C4', 'Tanggal Lunas');
-        $sheet->setCellValue('D4', 'Tanggal Pelunasan');
+        $sheet->setCellValue('D4', 'Tanggal Terima Uang');
         $sheet->setCellValue('E4', 'Nama');
         $sheet->setCellValue('F4', 'Paket');
         $sheet->setCellValue('G4', 'Biaya Paket');
