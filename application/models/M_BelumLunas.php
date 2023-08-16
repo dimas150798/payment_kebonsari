@@ -325,4 +325,117 @@ class M_BelumLunas extends CI_Model
             }
         }
     }
+
+    // Menampilkan Data Belum Lunas Tanggal
+    public function BelumLunasCustomDate($DateStart, $DateEnd)
+    {
+        $convertDateStart        = explode("-", $DateStart);
+        $convertDateEnd        = explode("-", $DateEnd);
+
+        $tahunStart              = $convertDateStart[0];
+        $bulanStart              = $convertDateStart[1];
+        $tanggalStart            = $convertDateStart[2];
+
+        $tahunEnd              = $convertDateEnd[0];
+        $bulanEnd              = $convertDateEnd[1];
+        $tanggalEnd            = $convertDateEnd[2];
+
+        $query   = $this->db->query("SELECT 
+        client.id, client.code_client, client.phone, client.name,  
+        client.name_pppoe, client.password_pppoe, client.id_pppoe, client.address, client.email, 
+        DAY(client.start_date) as tanggal, client.stop_date, client.description,
+        data_pembayaran.order_id, data_pembayaran.gross_amount, data_pembayaran.biaya_admin, 
+        data_pembayaran.nama_admin, data_pembayaran.nama, data_pembayaran.keterangan, data_pembayaran.payment_type, data_pembayaran.transaction_time, data_pembayaran.expired_date,
+        data_pembayaran.bank, data_pembayaran.va_number, data_pembayaran.permata_va_number, data_pembayaran.payment_code, data_pembayaran.bill_key, 
+        data_pembayaran.biller_code, data_pembayaran.pdf_url, data_pembayaran.status_code, paket.name as nama_paket, paket.price as harga_paket
+
+        FROM client
+        LEFT JOIN paket ON client.id_paket = paket.id
+        LEFT JOIN data_pembayaran ON client.name_pppoe = data_pembayaran.nama
+
+        AND MONTH(data_pembayaran.transaction_time) = $bulanStart AND YEAR(data_pembayaran.transaction_time) = $tahunStart
+
+        WHERE client.start_date BETWEEN '2020-01-01' AND '$DateStart'
+        AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
+        AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) BETWEEN '$tanggalStart' AND '$tanggalEnd'
+
+        ORDER BY DAY(client.start_date) ASC");
+
+        return $query->result_array();
+    }
+
+    public function BelumLunasCustomDateJumlah($DateStart, $DateEnd)
+    {
+        $convertDateStart        = explode("-", $DateStart);
+        $convertDateEnd        = explode("-", $DateEnd);
+
+        $tahunStart              = $convertDateStart[0];
+        $bulanStart              = $convertDateStart[1];
+        $tanggalStart            = $convertDateStart[2];
+
+        $tahunEnd              = $convertDateEnd[0];
+        $bulanEnd              = $convertDateEnd[1];
+        $tanggalEnd            = $convertDateEnd[2];
+
+        $query   = $this->db->query("SELECT 
+        client.id, client.code_client, client.phone, client.name,  
+        client.name_pppoe, client.password_pppoe, client.id_pppoe, client.address, client.email, 
+        DAY(client.start_date) as tanggal, client.stop_date, client.description,
+        data_pembayaran.order_id, data_pembayaran.gross_amount, data_pembayaran.biaya_admin, 
+        data_pembayaran.nama_admin, data_pembayaran.nama, data_pembayaran.keterangan, data_pembayaran.payment_type, data_pembayaran.transaction_time, data_pembayaran.expired_date,
+        data_pembayaran.bank, data_pembayaran.va_number, data_pembayaran.permata_va_number, data_pembayaran.payment_code, data_pembayaran.bill_key, 
+        data_pembayaran.biller_code, data_pembayaran.pdf_url, data_pembayaran.status_code, paket.name as nama_paket, paket.price as harga_paket
+
+        FROM client
+        LEFT JOIN paket ON client.id_paket = paket.id
+        LEFT JOIN data_pembayaran ON client.name_pppoe = data_pembayaran.nama
+
+        AND MONTH(data_pembayaran.transaction_time) = $bulanStart AND YEAR(data_pembayaran.transaction_time) = $tahunStart
+
+        WHERE client.start_date BETWEEN '2020-01-01' AND '$DateStart'
+        AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
+        AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) BETWEEN '$tanggalStart' AND '$tanggalEnd'
+
+        ORDER BY DAY(client.start_date) ASC");
+
+        return $query->num_rows();
+    }
+
+    // Menampilkan Jumlah Nominal Belum Lunas
+    public function NominalBelumLunasCustomDate($DateStart, $DateEnd)
+    {
+        $convertDateStart        = explode("-", $DateStart);
+        $convertDateEnd        = explode("-", $DateEnd);
+
+        $tahunStart              = $convertDateStart[0];
+        $bulanStart              = $convertDateStart[1];
+        $tanggalStart            = $convertDateStart[2];
+
+        $tahunEnd              = $convertDateEnd[0];
+        $bulanEnd              = $convertDateEnd[1];
+        $tanggalEnd            = $convertDateEnd[2];
+
+        $result   = $this->db->query("SELECT 
+        SUM(paket.price) AS harga_paket
+
+        FROM client
+        LEFT JOIN paket ON client.id_paket = paket.id
+        LEFT JOIN data_pembayaran ON client.name_pppoe = data_pembayaran.nama
+
+        AND MONTH(data_pembayaran.transaction_time) = $bulanStart AND YEAR(data_pembayaran.transaction_time) = $tahunStart
+
+        WHERE client.start_date BETWEEN '2020-01-01' AND '$DateStart'
+        AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
+        AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) BETWEEN '$tanggalStart' AND '$tanggalEnd'
+
+        ORDER BY DAY(client.start_date) ASC
+        ");
+
+        return $result->row();
+        if ($result->num_rows() > 0) {
+            return $result->row();
+        } else {
+            return false;
+        }
+    }
 }

@@ -18,8 +18,21 @@ if (!function_exists('changeDateFormat')) {
                     <img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/list.svg" alt="Bootstrap" ...> <b class="textmenuatas">Belum Lunas</b>
                 </div>
                 <div class="col-12 col-xl-auto mt-2">
-                    <a class="btn bg-danger text-white" href="<?php echo base_url('admin/BelumLunas/C_BelumLunas') ?>"><img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/backspace-fill.svg" alt="Bootstrap" ...> Kembali
-                    </a>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <a class="btn buttonmenuatas btn-sm" href="<?php echo base_url('admin/BelumLunas/C_ExportExcel') ?>"><img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/file-excel-fill.svg" alt="Bootstrap" ...> Export Excel
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <select name="forma" id='SelectOption' class="form-control">
+                                    <option value="day"><a href="#">Day</a></option>
+                                    <option value="monthly"><a href="#">Monthly</a></option>
+                                    <option value="custom_date"><a href="#">Custom Date</a></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -29,6 +29,24 @@
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>assets/js/desaignTables.js"></script>
 
+<!-- Date Pick -->
+<script>
+	document.getElementById('SelectOption').addEventListener('change', function() {
+		val = $("#SelectOption").val();
+
+		console.log(val)
+		if (val === 'day') {
+			window.open('<?php echo base_url('admin/BelumLunas/C_BelumLunasDate') ?>', '_self');
+		}
+		if (val === 'monthly') {
+			window.open('<?php echo base_url('admin/BelumLunas/C_BelumLunas') ?>', '_self');
+		}
+		if (val === 'custom_date') {
+			window.open('<?php echo base_url('admin/BelumLunas/C_BelumLunas_CustomDate') ?>', '_self');
+		}
+	});
+</script>
+
 <!-- Alert Login -->
 <script>
 	<?php if ($this->session->flashdata('LoginBerhasil_icon')) { ?>
@@ -134,6 +152,23 @@
 			"stateSave": true,
 			"ajax": {
 				"url": "<?= base_url('admin/BelumLunas/C_BelumLunasDate/GetBelumLunas'); ?>",
+			},
+
+		})
+	})
+</script>
+
+<!-- Ajax Show Data Pelanggan -->
+<script>
+	$(document).ready(function() {
+		$('#mytableCustomDate').DataTable({
+			"autoFill": true,
+			"pagingType": 'numbers',
+			"searching": true,
+			"paging": true,
+			"stateSave": true,
+			"ajax": {
+				"url": "<?= base_url('admin/BelumLunas/C_BelumLunas_CustomDate/GetBelumLunas'); ?>",
 			},
 
 		})
