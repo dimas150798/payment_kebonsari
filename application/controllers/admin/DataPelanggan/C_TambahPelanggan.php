@@ -110,6 +110,7 @@ class C_TambahPelanggan extends CI_Controller
             'keterangan'       => 'Registrasi Baru',
             'transaction_time' => date('Y-m-d H:i:s', time()),
             'status_code'      => '200',
+            'created_at'        => date('Y-m-d H:i:s', time()),
         );
 
         $dataPembayaranDuplicate = array(
@@ -123,6 +124,7 @@ class C_TambahPelanggan extends CI_Controller
             'keterangan'       => 'Registrasi Baru',
             'transaction_time' => date('Y-m-d H:i:s', time()),
             'status_code'      => '200',
+            'created_at'        => date('Y-m-d H:i:s', time()),
         );
 
         // Memanggil mysql dari model
