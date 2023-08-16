@@ -13,7 +13,8 @@ class M_SudahLunas extends CI_Model
         data_pembayaran.order_id, data_pembayaran.gross_amount, data_pembayaran.biaya_admin, data_pembayaran.biaya_instalasi,
         data_pembayaran.nama_admin, data_pembayaran.nama, data_pembayaran.keterangan, data_pembayaran.payment_type, data_pembayaran.transaction_time, data_pembayaran.expired_date,
         data_pembayaran.bank, data_pembayaran.va_number, data_pembayaran.permata_va_number, data_pembayaran.payment_code, data_pembayaran.bill_key, 
-        data_pembayaran.biller_code, data_pembayaran.pdf_url, data_pembayaran.status_code, data_pembayaran.paket as nama_paket, data_pembayaran.gross_amount as harga_paket
+        data_pembayaran.biller_code, data_pembayaran.pdf_url, data_pembayaran.status_code, data_pembayaran.paket as nama_paket, data_pembayaran.gross_amount as harga_paket,
+        data_pembayaran.created_at
 
         FROM client
         LEFT JOIN paket ON client.id_paket = paket.id
