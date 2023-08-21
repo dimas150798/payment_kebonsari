@@ -57,6 +57,8 @@ class C_TambahPelanggan extends CI_Controller
 
         if ($name_paket == 'Free 20 Mbps') {
             $profile_paket = 'HOME 20 B';
+        } elseif ($name_paket == 'Free Up Home 50') {
+            $profile_paket = 'HOME 50 B';
         } else {
             $profile_paket = strtoupper($name_paket) . " B";
         }
