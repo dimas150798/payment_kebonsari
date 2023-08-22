@@ -158,16 +158,16 @@ if (!function_exists('changeDateFormat')) {
                             Data Pelanggan
                         </div>
                         <div class="card-body">
-                            <table id="mytable" class="table table-bordered responsive nowrap" style="width:100%">
+                            <table id="mytable" class="table table-bordered responsive nowrap" style="width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th width="10%">No</th>
+                                        <th width="5%">No</th>
                                         <th width="20%">Nama</th>
                                         <th width="20%" class="text-center">Tanggal</th>
-                                        <th width="20%" class="text-center">Paket</th>
-                                        <th width="20%">Tarif</th>
-                                        <th width="20%">Payment By</th>
-                                        <th width="20%" class="text-center">Action</th>
+                                        <th width="10%" class="text-center">Paket</th>
+                                        <th width="15%">Tarif</th>
+                                        <th width="10%">Payment By</th>
+                                        <th width="10%" class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

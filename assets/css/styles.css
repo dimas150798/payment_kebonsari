@@ -12490,6 +12490,13 @@ body {
 	border-radius: 6px;
 }
 
+.table {
+	width: 100%;
+}
+
 .table thead {
 	background-color: aqua;
 }
+
+
+

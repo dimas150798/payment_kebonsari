@@ -65,12 +65,12 @@ if (!function_exists('changeDateFormat')) {
                             <table id="mytable" class="table table-bordered responsive nowrap" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Name</th>
-                                        <th class="text-center">Phone</th>
-                                        <th class="text-center">Nama Paket</th>
-                                        <th class="text-center">Date Registrasi</th>
-                                        <th class="text-center">Action</th>
+                                        <th width="5%">No</th>
+                                        <th width="20%">Name</th>
+                                        <th class="text-center" width="20%">Phone</th>
+                                        <th class="text-center" width="20%">Nama Paket</th>
+                                        <th class="text-center" width="20%">Date Registrasi</th>
+                                        <th class="text-center" width="15%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

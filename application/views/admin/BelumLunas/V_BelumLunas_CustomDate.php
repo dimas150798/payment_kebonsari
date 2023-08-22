@@ -134,12 +134,12 @@ if (!function_exists('changeDateFormat')) {
                             <table id="mytableCustomDate" class="table table-bordered responsive nowrap" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th width="10%">No</th>
+                                        <th width="5%">No</th>
                                         <th width="20%">Nama</th>
                                         <th width="20%" class="text-center">Tanggal</th>
                                         <th width="20%" class="text-center">Paket</th>
                                         <th width="20%" class="text-center">Tarif</th>
-                                        <th width="10%" class="text-center">Opsi</th>
+                                        <th width="15%" class="text-center">Opsi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
