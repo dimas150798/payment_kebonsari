@@ -166,6 +166,7 @@ if (!function_exists('changeDateFormat')) {
                                         <th width="20%" class="text-center">Tanggal</th>
                                         <th width="20%" class="text-center">Paket</th>
                                         <th width="20%">Tarif</th>
+                                        <th width="20%">Payment By</th>
                                         <th width="20%" class="text-center">Action</th>
                                     </tr>
                                 </thead>
