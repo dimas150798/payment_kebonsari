@@ -41,7 +41,7 @@ class C_DataPelanggan extends CI_Controller
         $this->load->view('admin/DataPelanggan/V_DataPelanggan', $data);
         $this->load->view('template/V_FooterPelanggan', $data);
     }
-    
+
     public function GetDataAjax()
     {
         $result = $this->M_Pelanggan->DataPelanggan();
@@ -57,6 +57,8 @@ class C_DataPelanggan extends CI_Controller
             $row[] = '<div class="text-center">' . $dataCustomer['phone'] . '</div>';
             $row[] = '<div class="text-center">' . $dataCustomer['nama_paket'] . '</div>';
             $row[] = '<div class="text-center">' . ($StartDate ? '<span class="badge bg-danger">DATA KOSONG</span>' : changeDateFormat('d-m-Y', $dataCustomer['start_date'])) . '</div>';
+            $row[] = '<div class="text-center">' . $dataCustomer['disabled'] . '</div>';
+
             $row[] =
                 '<div class="text-center">
                 <div class="btn-group">

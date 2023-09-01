@@ -43,6 +43,8 @@ class MikrotikModel extends CI_Model
                     $status = true;
 
                     $this->db->update("client", ['id_pppoe' => $valueSecret['.id']], ['id' => $value['id']]);
+                    $this->db->update("client", ['disabled' => $valueSecret['disabled']], ['id' => $value['id']]);
+
 
                     $response[$keySecret] = [
                         'id'                => $value['id'],
@@ -191,8 +193,7 @@ class MikrotikModel extends CI_Model
     {
         // Terminasi Bulan 2 (Februari)
         if ($bulan == 2 && $tanggal == 28) {
-            $getData = $this->db->query("
-            SELECT client.id, client.code_client, client.phone, client.name, client.id_paket, 
+            $getData = $this->db->query("SELECT client.id, client.code_client, client.phone, client.name, client.id_paket, 
             client.name_pppoe, client.password_pppoe, client.id_pppoe, client.address, client.email, 
             DAY(client.start_date) as tanggal, client.stop_date, client.id_area, client.description, client.id_sales,
             data_pembayaran.order_id, data_pembayaran.gross_amount, data_pembayaran.biaya_admin, data_pembayaran.nama, data_pembayaran.paket, 
@@ -207,7 +208,8 @@ class MikrotikModel extends CI_Model
     
             WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
             data_pembayaran.transaction_time IS NULL AND client.stop_date IS NULL
-            AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) >= '$tanggal'
+            AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) >= '$tanggal' AND
+            data_customer.disabled = 'false'
     
             GROUP BY client.name_pppoe
             ORDER BY DAY(client.start_date) ASC
@@ -231,24 +233,12 @@ class MikrotikModel extends CI_Model
                         // disable active otomatis
                         $ambilid = $api->comm("/ppp/active/print", ["?name" => $data['name_pppoe']]);
                         $api->comm('/ppp/active/remove', [".id" => $ambilid[0]['.id']]);
-                        $api->disconnect();
-                    }
-                } else {
-                    if ($data['transaction_time'] != null && $data['status_code'] == 200) {
-
-                        // disable secret otomatis
-                        $api = connect();
-                        $api->comm('/ppp/secret/set', [
-                            ".id" => $data['id_pppoe'],
-                            "disabled" => 'false',
-                        ]);
                         $api->disconnect();
                     }
                 }
             }
         } else {
-            $getData = $this->db->query("
-            SELECT client.id, client.code_client, client.phone, client.name, client.id_paket, 
+            $getData = $this->db->query("SELECT client.id, client.code_client, client.phone, client.name, client.id_paket, 
             client.name_pppoe, client.password_pppoe, client.id_pppoe, client.address, client.email, 
             DAY(client.start_date) as tanggal, client.stop_date, client.id_area, client.description, client.id_sales,
             data_pembayaran.order_id, data_pembayaran.gross_amount, data_pembayaran.biaya_admin, data_pembayaran.nama, data_pembayaran.paket, 
@@ -263,7 +253,8 @@ class MikrotikModel extends CI_Model
     
             WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
             data_pembayaran.transaction_time IS NULL AND client.stop_date IS NULL
-            AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) = '$tanggal'
+            AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) = '$tanggal' AND
+            data_customer.disabled = 'false'
     
             GROUP BY client.name_pppoe
             ORDER BY DAY(client.start_date) ASC
@@ -287,17 +278,6 @@ class MikrotikModel extends CI_Model
                         // disable active otomatis
                         $ambilid = $api->comm("/ppp/active/print", ["?name" => $data['name_pppoe']]);
                         $api->comm('/ppp/active/remove', [".id" => $ambilid[0]['.id']]);
-                        $api->disconnect();
-                    }
-                } else {
-                    if ($data['transaction_time'] != null && $data['status_code'] == 200) {
-
-                        // disable secret otomatis
-                        $api = connect();
-                        $api->comm('/ppp/secret/set', [
-                            ".id" => $data['id_pppoe'],
-                            "disabled" => 'false',
-                        ]);
                         $api->disconnect();
                     }
                 }

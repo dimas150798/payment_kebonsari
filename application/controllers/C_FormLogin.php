@@ -2,9 +2,11 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_FormLogin extends CI_Controller {
+class C_FormLogin extends CI_Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $this->form_validation->set_rules('email_login', 'email_login', 'required');
         $this->form_validation->set_rules('password_login', 'password_login', 'required');
         $this->form_validation->set_message('required', 'Masukan data terlebih dahulu');
@@ -58,7 +60,8 @@ class C_FormLogin extends CI_Controller {
         }
     }
 
-    public function TerminasiAuto() {
+    public function TerminasiAuto()
+    {
         date_default_timezone_set("Asia/Jakarta");
         // Menampilkan tanggal sekarang
         $toDay = date('Y-m-d');
@@ -86,7 +89,8 @@ class C_FormLogin extends CI_Controller {
         // $this->load->view('template/V_FooterTerminasiAuto', $data);
     }
 
-    public function GetTerminasiAuto() {
+    public function GetTerminasiAuto()
+    {
         date_default_timezone_set("Asia/Jakarta");
         $toDay = date('Y-m-d');
 
@@ -130,11 +134,13 @@ class C_FormLogin extends CI_Controller {
         $this->output->set_content_type('application/json')->set_output(json_encode($ouput));
     }
 
-    public function insertCustomer() {
+    public function insertCustomer()
+    {
         $this->MikrotikModel->index();
     }
 
-    public function logout() {
+    public function logout()
+    {
         session_start();
         session_destroy();
 
