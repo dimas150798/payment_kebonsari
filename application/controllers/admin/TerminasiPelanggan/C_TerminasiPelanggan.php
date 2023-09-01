@@ -59,6 +59,8 @@ class C_TerminasiPelanggan extends CI_Controller
             $row[] = '<div class="text-center">' . ($StartDate ? '<span class="badge bg-danger">DATA KOSONG</span>' : changeDateFormat('d-m-Y', $dataCustomer['start_date'])) . '</div>';
             $row[] = '<div class="text-center">' . changeDateFormat('d-m-Y', $dataCustomer['stop_date']);
             '</div>';
+            $row[] = '<div class="text-center">' . strtoupper($dataCustomer['disabled']) . '</div>';
+
             $row[] =
                 '<div class="text-center">
                 <div class="btn-group">

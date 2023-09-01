@@ -6,7 +6,7 @@ class M_TerminasiPelanggan extends CI_Model
     public function TerminasiPelanggan()
     {
         $query   = $this->db->query("SELECT client.id, client.code_client, client.phone, client.name,
-            client.name_pppoe, client.password_pppoe, client.id_pppoe, client.address, client.email, client.start_date, 
+            client.name_pppoe, client.password_pppoe, client.id_pppoe, client.address, client.email, client.start_date, client.disabled,
             client.stop_date, client.description, area.name as nama_area, sales.name as nama_sales, paket.name as nama_paket
             
             FROM client

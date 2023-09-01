@@ -69,6 +69,7 @@ if (!function_exists('changeDateFormat')) {
                                         <th class="text-center">Sales</th>
                                         <th class="text-center">Date Registrasi</th>
                                         <th class="text-center">Date Terminasi</th>
+                                        <th class="text-center">Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
