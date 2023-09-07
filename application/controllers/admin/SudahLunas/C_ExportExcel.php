@@ -58,7 +58,7 @@ class C_ExportExcel extends CI_Controller
             $tanggalGET             = $tahunGET . '-' . $bulanGET . '-' . $tanggal_akhir_GET;
         }
 
-        $data = $this->M_SudahLunas->SudahLunas($bulanGET, $tahunGET, $tanggalGET);
+        $data = $this->M_SudahLunas->SudahLunasExcel($bulanGET, $tahunGET, $tanggalGET);
 
         /* Spreadsheet Init */
         $spreadsheet = new Spreadsheet();

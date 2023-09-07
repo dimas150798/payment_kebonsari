@@ -31,6 +31,34 @@ class M_SudahLunas extends CI_Model
         return $query->result_array();
     }
 
+    // Menampilkan Data Sudah Lunas
+    public function SudahLunasExcel($bulan, $tahun, $tanggalAkhir)
+    {
+        $query   = $this->db->query("SELECT 
+            client.id, client.code_client, client.phone, client.name,  
+            client.name_pppoe, client.password_pppoe, client.id_pppoe, client.address, client.email, 
+            DAY(client.start_date) as tanggal, client.stop_date, client.description,
+            data_pembayaran.order_id, data_pembayaran.gross_amount, data_pembayaran.biaya_admin, data_pembayaran.biaya_instalasi,
+            data_pembayaran.nama_admin, data_pembayaran.nama, data_pembayaran.keterangan, data_pembayaran.payment_type, data_pembayaran.transaction_time, data_pembayaran.expired_date,
+            data_pembayaran.bank, data_pembayaran.va_number, data_pembayaran.permata_va_number, data_pembayaran.payment_code, data_pembayaran.bill_key, 
+            data_pembayaran.biller_code, data_pembayaran.pdf_url, data_pembayaran.status_code, data_pembayaran.paket as nama_paket, data_pembayaran.gross_amount as harga_paket,
+            data_pembayaran.created_at, DAY(data_pembayaran.created_at) as tanggalTransaksi, MONTH(data_pembayaran.created_at) as bulanTransaksi, YEAR(data_pembayaran.created_at) as tahunTransaksi
+    
+            FROM client
+            LEFT JOIN paket ON client.id_paket = paket.id
+            LEFT JOIN data_pembayaran ON client.name_pppoe = data_pembayaran.nama
+    
+            AND MONTH(data_pembayaran.transaction_time) = '$bulan' AND YEAR(data_pembayaran.transaction_time) = '$tahun'
+    
+            WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
+            data_pembayaran.transaction_time IS NOT NULL AND client.stop_date IS NULL
+    
+            GROUP BY client.name_pppoe
+            ORDER BY DAY(client.start_date) ASC");
+
+        return $query->result_array();
+    }
+
     // Menampilkan Jumlah Belum Lunas
     public function JumlahSudahLunas($bulan, $tahun, $tanggalAkhir)
     {
