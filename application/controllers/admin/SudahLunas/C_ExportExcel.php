@@ -137,8 +137,8 @@ class C_ExportExcel extends CI_Controller
 
         $sheet->setCellValue('A4', 'No');
         $sheet->setCellValue('B4', 'Invoice Payment');
-        $sheet->setCellValue('C4', 'Tanggal Lunas');
-        $sheet->setCellValue('D4', 'Tanggal Terima Uang');
+        $sheet->setCellValue('C4', 'Tanggal Jatuh Tempo');
+        $sheet->setCellValue('D4', 'Tanggal Transaksi');
         $sheet->setCellValue('E4', 'Nama');
         $sheet->setCellValue('F4', 'Paket');
         $sheet->setCellValue('G4', 'Biaya Paket');
@@ -190,7 +190,7 @@ class C_ExportExcel extends CI_Controller
         foreach ($data as $key => $row) {
             $sheet->setCellValue('A' . $row_number, $key + 1);
             $sheet->setCellValue('B' . $row_number, $row['order_id']);
-            $sheet->setCellValue('C' . $row_number, $row['transaction_time']);
+            $sheet->setCellValue('C' . $row_number, $row['tanggal']);
             $sheet->setCellValue('D' . $row_number, $row['created_at']);
             $sheet->setCellValue('E' . $row_number, strtoupper($row['name']));
             $sheet->setCellValue('F' . $row_number, strtoupper($row['nama_paket']));
