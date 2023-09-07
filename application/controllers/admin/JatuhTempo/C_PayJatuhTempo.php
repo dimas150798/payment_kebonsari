@@ -65,6 +65,7 @@ class C_PayJatuhTempo extends CI_Controller
             'transaction_time'  => $transaction_time,
             'expired_date'      => $transaction_time,
             'status_code'       => 200,
+            'created_at'        => date('Y-m-d H:i:s', time())
         );
 
         // Memanggil mysql dari model
