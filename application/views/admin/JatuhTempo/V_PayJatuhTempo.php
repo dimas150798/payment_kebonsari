@@ -54,7 +54,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-3 mt-3">
-                                        <label for="transaction_time" class="form-label" style="font-weight: bold;"> Tanggal Pembayaran : <span class="text-danger">*</span></label>
+                                        <label for="transaction_time" class="form-label" style="font-weight: bold;"> Tanggal Jatuh Tempo : <span class="text-danger">*</span></label>
                                         <input type="datetime-local" class="form-control" name="transaction_time" id="transaction_time" value="<?php date_default_timezone_set("Asia/Jakarta");
                                                                                                                                                 echo date('Y-m-d H:i:s', time()) ?>" readonly>
                                         <div class="bg-danger">

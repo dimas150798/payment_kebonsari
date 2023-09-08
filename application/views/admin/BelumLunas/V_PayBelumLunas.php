@@ -62,7 +62,7 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-3 mt-3">
-                                        <label for="transaction_time" class="form-label" style="font-weight: bold;"> Tanggal Pembayaran : <span class="text-danger">*</span></label>
+                                        <label for="transaction_time" class="form-label" style="font-weight: bold;"> Tanggal Jatuh Tempo : <span class="text-danger">*</span></label>
                                         <input type="datetime-local" class="form-control" name="transaction_time" id="transaction_time" value="">
                                         <div class="bg-danger">
                                             <small class="text-white"><?php echo form_error('transaction_time'); ?></small>
