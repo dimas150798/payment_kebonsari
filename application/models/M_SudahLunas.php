@@ -51,7 +51,8 @@ class M_SudahLunas extends CI_Model
             AND MONTH(data_pembayaran.transaction_time) = '$bulan' AND YEAR(data_pembayaran.transaction_time) = '$tahun'
     
             WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
-            data_pembayaran.transaction_time IS NOT NULL AND client.stop_date IS NULL
+            data_pembayaran.transaction_time IS NOT NULL AND client.stop_date IS NULL 
+            AND paket.name != 'Free 20 Mbps'
     
             GROUP BY client.name_pppoe
             ORDER BY DAY(client.start_date) ASC");
