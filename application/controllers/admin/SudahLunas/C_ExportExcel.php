@@ -191,7 +191,7 @@ class C_ExportExcel extends CI_Controller
             $sheet->setCellValue('A' . $row_number, $key + 1);
             $sheet->setCellValue('B' . $row_number, $row['order_id']);
             $sheet->setCellValue('C' . $row_number, $tahunGET . '-' . $bulanGET . '-' .  $row['tanggal']);
-            $sheet->setCellValue('D' . $row_number, $row['created_at']);
+            $sheet->setCellValue('D' . $row_number, $row['tahunTransaksi'] . '-' . $row['bulanTransaksi'] . '-' .  $row['tanggalTransaksi']);
             $sheet->setCellValue('E' . $row_number, strtoupper($row['name']));
             $sheet->setCellValue('F' . $row_number, strtoupper($row['nama_paket']));
             $sheet->setCellValue('G' . $row_number, $row['gross_amount']);
