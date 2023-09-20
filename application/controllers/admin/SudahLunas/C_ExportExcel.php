@@ -174,7 +174,7 @@ class C_ExportExcel extends CI_Controller
                 $sheet->setCellValue('B' . $row_number, $row['order_id']);
                 $sheet->setCellValue('C' . $row_number, $row['tahunJatuhTempo'] . '-' . $row['bulanJatuhTempo'] . '-' .  $row['tanggal']);
                 $sheet->setCellValue('D' . $row_number, $row['tahunTransaksi'] . '-' . $row['bulanTransaksi'] . '-' .  $row['tanggalTransaksi']);
-                $sheet->setCellValue('E' . $row_number, strtoupper($row['name']));
+                $sheet->setCellValue('E' . $row_number, strtoupper($row['nama']));
                 $sheet->setCellValue('F' . $row_number, strtoupper($row['nama_paket']));
                 $sheet->setCellValue('G' . $row_number, $row['gross_amount']);
                 $sheet->setCellValue('H' . $row_number, $row['biaya_admin']);
@@ -372,7 +372,7 @@ class C_ExportExcel extends CI_Controller
                 $sheet->setCellValue('B' . $row_number, $row['order_id']);
                 $sheet->setCellValue('C' . $row_number, $row['tahunJatuhTempo'] . '-' . $row['bulanJatuhTempo'] . '-' .  $row['tanggal']);
                 $sheet->setCellValue('D' . $row_number, $row['tahunTransaksi'] . '-' . $row['bulanTransaksi'] . '-' .  $row['tanggalTransaksi']);
-                $sheet->setCellValue('E' . $row_number, strtoupper($row['name']));
+                $sheet->setCellValue('E' . $row_number, strtoupper($row['nama']));
                 $sheet->setCellValue('F' . $row_number, strtoupper($row['nama_paket']));
                 $sheet->setCellValue('G' . $row_number, $row['gross_amount']);
                 $sheet->setCellValue('H' . $row_number, $row['biaya_admin']);
