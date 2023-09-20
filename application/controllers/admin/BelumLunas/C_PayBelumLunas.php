@@ -43,7 +43,13 @@ class C_PayBelumLunas extends CI_Controller
         } else {
             // Menggabungkan tanggal, bulan, tahun
             date_default_timezone_set("Asia/Jakarta");
-            $data['Tanggal'] = $this->session->userdata('tahunGET') . '-' . $this->session->userdata('bulanGET') . '-' . $CheckPelanggan->JatuhTempo . ' ' . date("H:i:s");
+            $datetime = new DateTime($transaction_time);
+
+            $Tahun = $datetime->format("Y"); // Untuk tahun (format Y untuk tahun empat digit)
+            $Bulan = $datetime->format("m"); // Untuk bulan (format m untuk bulan dua digit)
+            $Tanggal = $datetime->format("d"); // Untuk tanggal (format d untuk tanggal dua digit)
+
+            $data['Tanggal'] = $Tahun . '-' . $Bulan . '-' . $CheckPelanggan->JatuhTempo . ' ' . date("H:i:s");
 
             $data['DataPelanggan']  = $this->M_BelumLunas->Payment($id_customer);
 
