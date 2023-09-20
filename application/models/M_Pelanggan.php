@@ -129,6 +129,23 @@ class M_Pelanggan extends CI_Model
         }
     }
 
+    // Check data pelanggan
+    public function CheckIDPelanggan($id_customer)
+    {
+        $this->db->select('name, id_pppoe, name_pppoe, DAY(start_date) as JatuhTempo');
+        $this->db->where('id', $id_customer);
+
+        $this->db->limit(1);
+        $result = $this->db->get('client');
+
+        return $result->row();
+        if ($result->num_rows() > 0) {
+            return $result->row();
+        } else {
+            return false;
+        }
+    }
+
     // Check data code client
     public function CheckDuplicateCode($code_invoice)
     {

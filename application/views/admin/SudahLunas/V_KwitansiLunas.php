@@ -58,7 +58,8 @@ if (!function_exists('changeDateFormat')) {
                                     <p class="kwitansiPembayaran">PEMBAYARAN</p>
                                 </div>
                                 <div class="col-sm-12">
-                                    <p class="kwitansiBody">Transaksi : <?php echo $months[$data['bulan_transaksi']] ?></p>
+                                    <p class="kwitansiBody">Transaksi : <?php echo date('d-m-Y H:i:s', strtotime($data['created_at'])); ?>
+                                    </p>
                                 </div>
                                 <div class="col-sm-12">
                                     <p class="kwitansiBody">Telepon : <?php echo $data['phone'] ?></p>

@@ -54,19 +54,19 @@
 
                                 <div class="row">
                                     <div class="col-sm-3 mt-3">
+                                        <label for="transaction_time" class="form-label" style="font-weight: bold;"> Tanggal Jatuh Tempo : <span class="text-danger">*</span></label>
+                                        <input type="datetime" class="form-control" name="transaction_time" id="transaction_time" value="<?php echo $Tanggal ?>" readonly>
+                                        <div class="bg-danger">
+                                            <small class="text-white"><?php echo form_error('transaction_time'); ?></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
                                         <label for="biaya_admin" class="form-label" style="font-weight: bold;"> Biaya Admin : <span class="text-danger">*</span></label>
                                         <select id="biaya_admin" name="biaya_admin" class="form-control" required>
                                             <option value="">--- Pilih Biaya Admin ---</optxion>
                                             <option value="0">Rp. 0</option>
                                             <option value="5000">RP. 5000</option>
                                         </select>
-                                    </div>
-                                    <div class="col-sm-3 mt-3">
-                                        <label for="transaction_time" class="form-label" style="font-weight: bold;"> Tanggal Jatuh Tempo : <span class="text-danger">*</span></label>
-                                        <input type="datetime-local" class="form-control" name="transaction_time" id="transaction_time" value="">
-                                        <div class="bg-danger">
-                                            <small class="text-white"><?php echo form_error('transaction_time'); ?></small>
-                                        </div>
                                     </div>
                                     <div class="col-sm-3 mt-3">
                                         <label for="nama_admin" class="form-label" style="font-weight: bold;"> Pembayaran Melalui : <span class="text-danger">*</span></label>

@@ -48,10 +48,13 @@ class C_PayJatuhTempo extends CI_Controller
         $nama_admin             = $this->input->post('nama_admin');
         $keterangan             = $this->input->post('keterangan');
 
-        $explode = explode("-", $transaction_time);
-        echo $explode[0]; //untuk tahun
-        echo $explode[1]; //untuk bulan
-        echo $explode[2]; //untuk tanggal
+        $datetime = new DateTime($transaction_time);
+
+        $Tahun = $datetime->format("Y"); // Untuk tahun (format Y untuk tahun empat digit)
+        $Bulan = $datetime->format("m"); // Untuk bulan (format m untuk bulan dua digit)
+        $Tanggal = $datetime->format("d"); // Untuk tanggal (format d untuk tanggal dua digit)
+
+        $CheckJumlahSudahLunas = $this->M_SudahLunas->CheckJumlahSudahLunas($Bulan, $Tahun, $name_pppoe);
 
         // Menyimpan data payment ke dalam array
         $dataPayment = array(
@@ -68,9 +71,27 @@ class C_PayJatuhTempo extends CI_Controller
             'created_at'        => date('Y-m-d H:i:s', time())
         );
 
+        // Menyimpan data payment ke dalam array
+        $dataPaymentDuplicate = array(
+            'order_id'          => $this->M_BelumLunas->invoice(),
+            'gross_amount'      => $gross_amount,
+            'biaya_admin'       => $biaya_admin,
+            'nama'              => $name_pppoe,
+            'paket'             => $nama_paket,
+            'nama_admin'        => $nama_admin,
+            'keterangan'        => $keterangan,
+            'transaction_time'  => $transaction_time,
+            'expired_date'      => $transaction_time,
+            'status_code'       => 200,
+            'created_at'        => date('Y-m-d H:i:s', time())
+        );
+
         // Memanggil mysql dari model
-        $data['DataPelanggan']  = $this->M_JatuhTempo->Payment($id);
-        $checkDuplicatePay      = $this->M_JatuhTempo->CheckDuplicatePayment($explode[1], $explode[0], $name_pppoe);
+        // Memanggil mysql dari model
+        $data['DataPelanggan']  = $this->M_BelumLunas->Payment($id);
+
+        // Check duplicate code
+        $checkDuplicateCode = $this->M_Pelanggan->CheckDuplicateCode($order_id);
 
         // Rules form validation
         $this->form_validation->set_rules('biaya_admin', 'Biaya Admin', 'required');
@@ -84,31 +105,45 @@ class C_PayJatuhTempo extends CI_Controller
             $this->load->view('admin/JatuhTempo/V_PayJatuhTempo', $data);
             $this->load->view('template/V_FooterJatuhTempo', $data);
         } else {
-            if ($checkDuplicatePay->bulan_payment == $explode[1] && $checkDuplicatePay->tahun_payment == $explode[0] && $checkDuplicatePay->name_pppoe == $name_pppoe) {
+            if ($CheckJumlahSudahLunas == 0) {
+                if ($order_id != $checkDuplicateCode->order_id) {
+                    $api = connect();
+                    $api->comm('/ppp/secret/set', [
+                        ".id" => $id_pppoe,
+                        "disabled" => 'false',
+                    ]);
+                    $api->disconnect();
+
+                    $this->M_CRUD->insertData($dataPayment, 'data_pembayaran');
+                    $this->M_CRUD->insertData($dataPayment, 'data_pembayaran_history');
+
+                    $this->session->set_flashdata('payment_icon', 'success');
+                    $this->session->set_flashdata('payment_title', 'Pembayaran An. <b>' . $name_pppoe . '</b> Berhasil');
+
+                    redirect('admin/JatuhTempo/C_DataJatuhTempo');
+                } else {
+                    $api = connect();
+                    $api->comm('/ppp/secret/set', [
+                        ".id" => $id_pppoe,
+                        "disabled" => 'false',
+                    ]);
+                    $api->disconnect();
+
+                    $this->M_CRUD->insertData($dataPaymentDuplicate, 'data_pembayaran');
+                    $this->M_CRUD->insertData($dataPaymentDuplicate, 'data_pembayaran_history');
+
+                    $this->session->set_flashdata('payment_icon', 'success');
+                    $this->session->set_flashdata('payment_title', 'Pembayaran An. <b>' . $name_pppoe . '</b> Berhasil');
+
+                    redirect('admin/JatuhTempo/C_DataJatuhTempo');
+                }
+            } else {
                 // Notifikasi duplicate payment
                 $this->session->set_flashdata('DuplicatePay_icon', 'error');
                 $this->session->set_flashdata('DuplicatePay_title', 'Payment Gagal');
-                $this->session->set_flashdata('DuplicatePay_text', 'Customer sudah melakukan <br> Pembayaran bulan ini');
+                $this->session->set_flashdata('DuplicatePay_text', 'Customer sudah melakukan <br> Pembayaran bulan yang di pilih');
 
-                echo "
-                <script>history.go(-1);            
-                </script>
-                ";
-            } else {
-                // Notifikasi Login Berhasil
-                $this->session->set_flashdata('payment_icon', 'success');
-                $this->session->set_flashdata('payment_title', 'Pembayaran An. <b>' . $name_pppoe . '</b> Berhasil');
-
-                $api = connect();
-                $api->comm('/ppp/secret/set', [
-                    ".id" => $id_pppoe,
-                    "disabled" => 'false',
-                ]);
-                $api->disconnect();
-
-                $this->M_CRUD->insertData($dataPayment, 'data_pembayaran');
-                $this->M_CRUD->insertData($dataPayment, 'data_pembayaran_history');
-                redirect('admin/JatuhTempo/C_DataJatuhTempo');
+                redirect($_SERVER['HTTP_REFERER']); // Mengarahkan pengguna kembali ke halaman sebelumnya
             }
         }
     }

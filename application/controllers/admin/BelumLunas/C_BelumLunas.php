@@ -30,6 +30,8 @@ class C_BelumLunas extends CI_Controller
         $this->session->unset_userdata('LoginBerhasil_icon');
 
         if ((isset($_GET['bulan']) && $_GET['bulan'] != '') && (isset($_GET['tahun']) && $_GET['tahun'] != '')) {
+
+            date_default_timezone_set("Asia/Jakarta");
             $bulanGET                   = $_GET['bulan'];
             $tahunGET                   = $_GET['tahun'];
 
