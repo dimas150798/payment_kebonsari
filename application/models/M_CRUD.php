@@ -21,4 +21,10 @@ class M_CRUD extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);
     }
+
+    public function insertBatchData($data, $table)
+    {
+        $this->db->insert_batch($table, $data);
+        return $this->db->affected_rows();
+    }
 }

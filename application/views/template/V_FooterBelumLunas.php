@@ -182,6 +182,13 @@
 	}
 </script>
 
+<!-- Payment Bundling Pelanggan -->
+<script>
+	function PaymentBundling(parameter_id) {
+		window.location.href = "<?php echo site_url('admin/BelumLunas/C_PayBundling/Payment') ?>/" + parameter_id;
+	}
+</script>
+
 <!-- Kirim Tagihan-->
 <script>
 	function KirimWA(parameter_id) {

@@ -68,3 +68,10 @@ $('#biaya_instalasi').each(function() {
         dropdownParent: $(this).parent(),
     });
 });
+$('#paket_bundling').each(function() {
+    $(this).select2({
+        placeholder: 'Pilih Paket Bundling :',
+        theme: 'bootstrap-5',
+        dropdownParent: $(this).parent(),
+    });
+});

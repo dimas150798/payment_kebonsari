@@ -172,6 +172,8 @@ class C_BelumLunas extends CI_Controller
                 'data' => $data
             );
 
+            // <a onclick="PaymentBundling(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"></i> Lunasi Bundling</a>
+
             $this->output->set_content_type('application/json')->set_output(json_encode($ouput));
         }
     }
