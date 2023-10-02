@@ -82,7 +82,7 @@ class C_BelumLunas extends CI_Controller
             $NominalBelumLunas          = $this->M_BelumLunas->NominalBelumLunas($bulan, $tahun, $TanggalAkhir);
 
             // Menyimpan query di dalam data
-            $data['bulan']              = str_split($bulan);
+            $data['bulan']              = $bulan;
             $data['tahun']              = $tahun;
             $data['NominalBelumLunas']  = $NominalBelumLunas->harga_paket;
 
