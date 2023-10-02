@@ -63,6 +63,13 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-sm-12 mt-3">
+                                        <label for="nama_paket" class="form-label" style="font-weight: bold;"> Keterangan : <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" name="keterangan" id="keterangan" placeholder="Masukkan keterangan..." rows="3"></textarea>
+                                    </div>
+                                </div>
+
                                 <div class="row mt-3">
                                     <div class="col-sm-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-success mt-2 justify-content-end"><i class="bi bi-plus-circle"></i> Simpan</button>

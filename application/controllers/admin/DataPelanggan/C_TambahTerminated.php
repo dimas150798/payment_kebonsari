@@ -36,12 +36,16 @@ class C_TambahTerminated extends CI_Controller
 
         // Mengambil data post pada view
         $id                     = $this->input->post('id');
+        $id_pppoe               = $this->input->post('id_pppoe');
+        $name_pppoe             = $this->input->post('name_pppoe');
         $stop_date              = $this->input->post('stop_date');
+        $keterangan             = $this->input->post('keterangan');
 
         // Menyimpan data pelanggan ke dalam array
         $dataPelanggan = array(
             'id'                => $id,
             'stop_date'         => $stop_date,
+            'keterangan'        => $keterangan,
             'updated_at'        => date('Y-m-d H:i:s', time())
         );
 
@@ -67,6 +71,18 @@ class C_TambahTerminated extends CI_Controller
             $this->load->view('template/V_FooterPelanggan', $data);
         } else {
             $this->M_CRUD->updateData('client', $dataPelanggan, $idCustomer);
+
+            // disable secret dan active otomatis 
+            $api = connect();
+            $api->comm('/ppp/secret/set', [
+                ".id" => $id_pppoe,
+                "disabled" => 'true',
+            ]);
+
+            // disable active otomatis
+            $ambilid = $api->comm("/ppp/active/print", ["?name" => $name_pppoe]);
+            $api->comm('/ppp/active/remove', [".id" => $ambilid[0]['.id']]);
+            $api->disconnect();
 
             // Notifikasi Login Berhasil
             $this->session->set_flashdata('Terminasi_icon', 'success');

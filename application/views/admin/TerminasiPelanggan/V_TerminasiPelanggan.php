@@ -70,6 +70,7 @@ if (!function_exists('changeDateFormat')) {
                                         <th class="text-center">Date Registrasi</th>
                                         <th class="text-center">Date Terminasi</th>
                                         <th class="text-center">Status</th>
+                                        <th class="text-center">Keterangan</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
