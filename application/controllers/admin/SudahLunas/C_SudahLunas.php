@@ -82,7 +82,7 @@ class C_SudahLunas extends CI_Controller
             $NominalBiayaAdmin          = $this->M_SudahLunas->BiayaAdmin($bulan, $tahun);
 
             // Menyimpan query di dalam data
-            $data['bulan']              = str_split($bulan);
+            $data['bulan']              = $bulan;
             $data['tahun']              = $tahun;
             $data['NominalSudahLunas']  = $NominalSudahLunas->harga_paket + $NominalBiayaAdmin->biaya_admin;
 

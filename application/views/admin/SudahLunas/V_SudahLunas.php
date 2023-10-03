@@ -66,7 +66,7 @@ if (!function_exists('changeDateFormat')) {
                                     echo '<option value="" disabled>-- Pilih Bulan --</option>';
 
                                     for ($m = 1; $m <= 12; ++$m) {
-                                        if ($bulan[1] == $m) {
+                                        if ($bulan == $m) {
                                             echo '<option selected value=' . $m . '>' . date('F', mktime(0, 0, 0, $m, 1)) . '</option>' . "\n";
                                         } else {
                                             echo '<option  value=' . $m . '>' . date('F', mktime(0, 0, 0, $m, 1)) . '</option>' . "\n";
@@ -109,7 +109,7 @@ if (!function_exists('changeDateFormat')) {
                                 <p class="dataPencarian">:
                                     <?php
                                     if ($tahunGET == NULL && $bulanGET == NULL) {
-                                        echo $months[$bulan[1]] . ' / ' . $tahun;
+                                        echo $months[$bulan] . ' / ' . $tahun;
                                     } else {
                                         echo $months[$bulanGET] . ' / ' . $tahunGET;
                                     }
