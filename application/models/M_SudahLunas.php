@@ -63,7 +63,7 @@ class M_SudahLunas extends CI_Model
     
             WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
             data_pembayaran.transaction_time IS NOT NULL AND client.stop_date IS NULL 
-            AND paket.name != 'Free 20 Mbps' AND data_pembayaran.gross_amount != 0
+            AND paket.name != 'Free 20 Mbps'
     
             ORDER BY DAY(client.start_date) ASC");
 
