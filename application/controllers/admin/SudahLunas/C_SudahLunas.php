@@ -112,6 +112,7 @@ class C_SudahLunas extends CI_Controller
 
             foreach ($result as $dataCustomer) {
                 $GrossAmount = $dataCustomer['gross_amount'] == NULL;
+                $StatusMikrotik = $dataCustomer['disabled'] == 'true';
 
                 $row = array();
                 $row[] = ++$no;
@@ -120,7 +121,8 @@ class C_SudahLunas extends CI_Controller
                 $row[] = '<div class="text-center">' . strtoupper($dataCustomer['nama_paket']) . '</div>';
                 $row[] = 'Rp. ' . number_format($dataCustomer['harga_paket'], 0, ',', '.') . '<br>' . 'Rp.' . number_format($dataCustomer['biaya_admin'], 0, ',', '.');
                 $row[] = $dataCustomer['nama_admin'];
-                $row[] = $dataCustomer['disabled'];
+                $row[] = '<div class="text-center">' . ($StatusMikrotik ? '<span class="badge bg-danger">DISABLED</span>' : '<span class="badge bg-success">ENABLE</span>') . '</div>';
+
 
                 $row[] =
                     '<div class="text-center">
@@ -150,6 +152,8 @@ class C_SudahLunas extends CI_Controller
 
             foreach ($result as $dataCustomer) {
                 $GrossAmount = $dataCustomer['gross_amount'] == NULL;
+                $StatusMikrotik = $dataCustomer['disabled'] == 'true';
+
 
                 $row = array();
                 $row[] = ++$no;
@@ -158,7 +162,8 @@ class C_SudahLunas extends CI_Controller
                 $row[] = '<div class="text-center">' . strtoupper($dataCustomer['nama_paket']) . '</div>';
                 $row[] = '<div class="text-center">' . 'Rp. ' . number_format($dataCustomer['harga_paket'], 0, ',', '.') . '<br>' . 'Rp.' . number_format($dataCustomer['biaya_admin'], 0, ',', '.') . '</div>';
                 $row[] = $dataCustomer['nama_admin'];
-                $row[] = $dataCustomer['disabled'];
+                $row[] = '<div class="text-center">' . ($StatusMikrotik ? '<span class="badge bg-danger">DISABLED</span>' : '<span class="badge bg-success">ENABLE</span>') . '</div>';
+
 
                 $row[] =
                     '<div class="text-center">

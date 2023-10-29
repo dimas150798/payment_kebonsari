@@ -167,6 +167,7 @@ if (!function_exists('changeDateFormat')) {
                                         <th width="10%" class="text-center">Paket</th>
                                         <th width="15%">Tarif</th>
                                         <th width="10%">Payment By</th>
+                                        <th width="10%">Status</th>
                                         <th width="10%" class="text-center">Action</th>
                                     </tr>
                                 </thead>
