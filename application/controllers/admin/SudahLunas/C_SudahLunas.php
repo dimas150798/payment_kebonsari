@@ -120,6 +120,7 @@ class C_SudahLunas extends CI_Controller
                 $row[] = '<div class="text-center">' . strtoupper($dataCustomer['nama_paket']) . '</div>';
                 $row[] = 'Rp. ' . number_format($dataCustomer['harga_paket'], 0, ',', '.') . '<br>' . 'Rp.' . number_format($dataCustomer['biaya_admin'], 0, ',', '.');
                 $row[] = $dataCustomer['nama_admin'];
+                $row[] = $dataCustomer['disabled'];
 
                 $row[] =
                     '<div class="text-center">
@@ -157,6 +158,7 @@ class C_SudahLunas extends CI_Controller
                 $row[] = '<div class="text-center">' . strtoupper($dataCustomer['nama_paket']) . '</div>';
                 $row[] = '<div class="text-center">' . 'Rp. ' . number_format($dataCustomer['harga_paket'], 0, ',', '.') . '<br>' . 'Rp.' . number_format($dataCustomer['biaya_admin'], 0, ',', '.') . '</div>';
                 $row[] = $dataCustomer['nama_admin'];
+                $row[] = $dataCustomer['disabled'];
 
                 $row[] =
                     '<div class="text-center">
