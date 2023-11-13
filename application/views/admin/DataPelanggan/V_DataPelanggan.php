@@ -66,12 +66,13 @@ if (!function_exists('changeDateFormat')) {
                                 <thead>
                                     <tr>
                                         <th width="5%">No</th>
-                                        <th width="20%">Name</th>
+                                        <th width="10%">Nama Customer</th>
+                                        <th width="10%">Name PPPOE</th>
                                         <th class="text-center" width="20%">Phone</th>
                                         <th class="text-center" width="10%">Nama Paket</th>
                                         <th class="text-center" width="20%">Date Registrasi</th>
-                                        <th class="text-center" width="10%">Status</th>
                                         <th class="text-center" width="10%">sales</th>
+                                        <th class="text-center" width="10%">Status</th>
                                         <th class="text-center" width="5%">Action</th>
                                     </tr>
                                 </thead>
