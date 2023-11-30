@@ -20,6 +20,8 @@ if (!function_exists('changeDateFormat')) {
                 <div class="col-12 col-xl-auto mt-2">
                     <a class="btn buttonmenuatas" href="<?php echo base_url('admin/SudahLunas/C_ExportExcel') ?>"><img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/file-excel-fill.svg" alt="Bootstrap" ...> Export Excel
                     </a>
+                    <a class="btn buttonmenuatas" href="<?php echo base_url('admin/SudahLunas/C_ExportExcelAll') ?>"><img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/file-excel-fill.svg" alt="Bootstrap" ...> Export Excel All
+                    </a>
                 </div>
             </div>
         </div>
