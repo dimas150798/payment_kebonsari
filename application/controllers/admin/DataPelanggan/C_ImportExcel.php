@@ -161,4 +161,109 @@ class C_ImportExcel extends CI_Controller
             return false;
         }
     }
+
+
+    public function DeletePelanggan()
+    {
+        // Memanggil mysql dari model
+        $data['DataPaket']      = $this->M_Paket->DataPaket();
+        $data['DataArea']       = $this->M_Area->DataArea();
+        $data['DataSales']      = $this->M_Sales->DataSales();
+        $data['DataExcel']      = $this->M_ImportExcel->DataExcel_Delete();
+
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebarAdmin', $data);
+        $this->load->view('admin/DataPelanggan/V_ImportExcel_DeletePelanggan', $data);
+        $this->load->view('template/V_FooterImportExcel', $data);
+    }
+
+    public function  ImportExcel_DeletePelanggan()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $upload_status = $this->uploadDoc_DeletePelanggan();
+            if ($upload_status != false) {
+                $inputFileName      = 'assets/uploads/imports/' . $upload_status;
+                $inputTileType      = \PhpOffice\PhpSpreadsheet\IOFactory::identify($inputFileName);
+                $reader             = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputTileType);
+                $spreadsheet        = $reader->load($inputFileName);
+                $sheetData          = $spreadsheet->getActiveSheet()->toArray();
+            }
+
+            for ($i = 5; $i < count($sheetData); $i++) {
+                $code_client        = $sheetData[$i]['1'];
+                $name               = $sheetData[$i]['2'];
+                $phone              = $sheetData[$i]['3'];
+                $nama_paket         = $sheetData[$i]['4'];
+                $name_pppoe         = $sheetData[$i]['6'];
+                $password_pppoe     = $sheetData[$i]['7'];
+                $address            = $sheetData[$i]['8'];
+                $email              = $sheetData[$i]['9'];
+                $start_date         = $sheetData[$i]['10'];
+                $nama_area          = $sheetData[$i]['11'];
+                $nama_sales         = $sheetData[$i]['12'];
+                $id_paket           = $sheetData[$i]['13'];
+                $id_area            = $sheetData[$i]['14'];
+                $id_sales           = $sheetData[$i]['15'];
+
+                // Menyimpan data dalam array
+                $data_customer = array(
+                    'code_client'       => $code_client,
+                    'phone'             => $phone,
+                    'name'              => $name,
+                    'id_paket'          => $id_paket,
+                    'name_pppoe'        => $name_pppoe,
+                    'password_pppoe'    => $password_pppoe,
+                    'address'           => $address,
+                    'email'             => $email,
+                    'start_date'        => $start_date,
+                    'id_area'           => $id_area,
+                    'id_sales'          => $id_sales,
+                );
+
+                $api = connect();
+                $api->comm('/ppp/secret/remove', [
+                    "name"     => $name_pppoe,
+                ]);
+                $api->disconnect();
+
+                // Kondisi delete menggunakan id_customer
+                $idCustomer = array(
+                    'name_pppoe'       => $name_pppoe
+                );
+
+                $this->M_CRUD->deleteData($idCustomer, 'client');
+            }
+        }
+    }
+
+
+    function uploadDoc_DeletePelanggan()
+    {
+        $uploadPath = 'assets/uploads/imports/';
+        if (!is_dir($uploadPath)) {
+            mkdir($uploadPath, 0777, TRUE);
+        }
+
+        $config['upload_path'] = $uploadPath;
+        $config['allowed_types'] = 'csv|xlsx|xls';
+        $config['max_size'] = 1000000;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('upload_excel')) {
+            $fileData = $this->upload->data();
+            $data['file_name'] = $fileData['file_name'];
+            $data['keterangan'] = 'Delete';
+
+            $this->db->insert('data_excel', $data);
+
+            $insert_id = $this->db->insert_id();
+            $_SESSION['lastid'] = $insert_id;
+
+            return $fileData['file_name'];
+        } else {
+            return false;
+        }
+    }
 }
