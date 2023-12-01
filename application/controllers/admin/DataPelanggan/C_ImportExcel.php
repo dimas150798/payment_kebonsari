@@ -195,6 +195,7 @@ class C_ImportExcel extends CI_Controller
                 $name               = $sheetData[$i]['2'];
                 $phone              = $sheetData[$i]['3'];
                 $nama_paket         = $sheetData[$i]['4'];
+                $id_pppoe           = $sheetData[$i]['5'];
                 $name_pppoe         = $sheetData[$i]['6'];
                 $password_pppoe     = $sheetData[$i]['7'];
                 $address            = $sheetData[$i]['8'];
@@ -223,7 +224,7 @@ class C_ImportExcel extends CI_Controller
 
                 $api = connect();
                 $api->comm('/ppp/secret/remove', [
-                    "name"     => $name_pppoe,
+                    ".id" => $id_pppoe,
                 ]);
                 $api->disconnect();
 
