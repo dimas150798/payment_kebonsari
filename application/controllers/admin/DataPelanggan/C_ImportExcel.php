@@ -234,6 +234,11 @@ class C_ImportExcel extends CI_Controller
                 );
 
                 $this->M_CRUD->deleteData($idCustomer, 'client');
+
+
+                echo "
+                <script>history.go(-1);</script>
+                ";
             }
         }
     }
