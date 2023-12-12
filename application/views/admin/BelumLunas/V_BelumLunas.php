@@ -59,7 +59,7 @@ if (!function_exists('changeDateFormat')) {
                                 } else {
                                     echo '<option value="" disabled>-- Pilih Tahun --</option>';
 
-                                    for ($i = 2022; $i <= 2023; $i++) {
+                                    for ($i = 2022; $i <= 2025; $i++) {
                                         if ($tahunGET == $i) {
                                             echo '<option selected value=' . $i . '>' . date("Y", mktime(0, 0, 0, 1, 1, $i)) . '</option>' . "\n";
                                         } else {
