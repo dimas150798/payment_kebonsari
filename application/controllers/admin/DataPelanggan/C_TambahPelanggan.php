@@ -186,7 +186,7 @@ class C_TambahPelanggan extends CI_Controller
                     $api->disconnect();
 
                     // Memanggil data Mikrotik
-                    $this->MikrotikModel->index();
+                    // $this->MikrotikModel->index();
 
                     // Notifikasi Tambah Data Berhasil
                     $this->session->set_flashdata('Tambah_icon', 'success');
@@ -210,7 +210,7 @@ class C_TambahPelanggan extends CI_Controller
                     $api->disconnect();
 
                     // Memanggil data Mikrotik
-                    $this->MikrotikModel->index();
+                    // $this->MikrotikModel->index();
 
                     // Notifikasi Tambah Data Berhasil
                     $this->session->set_flashdata('Tambah_icon', 'success');
