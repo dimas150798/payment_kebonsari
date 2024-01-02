@@ -33,6 +33,9 @@ class C_SudahLunas extends CI_Controller
             $bulanGET                   = $_GET['bulan'];
             $tahunGET                   = $_GET['tahun'];
 
+            // Menambahkan 0 di depan bulan jika kurang dari 10
+            $bulanGET_0 = sprintf("%02d", $bulanGET);
+
             // Menampilkan tanggal pada akhir bulan GET
             $tanggal_akhir_GET          = cal_days_in_month(CAL_GREGORIAN, $bulanGET, $tahunGET);
 
@@ -61,7 +64,7 @@ class C_SudahLunas extends CI_Controller
             $this->load->view('template/V_FooterSudahLunas', $data);
         } else {
             date_default_timezone_set("Asia/Jakarta");
-            $bulan                      = date("m");
+            $bulan                      = date("n");
             $tahun                      = date("Y");
 
             // Menampilkan tanggal pada akhir bulan
