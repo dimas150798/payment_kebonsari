@@ -179,7 +179,7 @@ class M_SudahLunas extends CI_Model
         client.name_pppoe, client.password_pppoe, client.id_pppoe, client.address, client.email, 
         DAY(client.start_date) as tanggal, client.stop_date, client.description,
         data_pembayaran.order_id, data_pembayaran.gross_amount, data_pembayaran.biaya_admin, 
-        data_pembayaran.nama_admin, data_pembayaran.nama, data_pembayaran.keterangan, data_pembayaran.payment_type, MONTH(data_pembayaran.transaction_time)), 2) as bulan_transaksi,
+        data_pembayaran.nama_admin, data_pembayaran.nama, data_pembayaran.keterangan, data_pembayaran.payment_type, MONTH(data_pembayaran.transaction_time) as bulan_transaksi,
         YEAR(data_pembayaran.transaction_time) as tahun_transaksi, data_pembayaran.transaction_time, data_pembayaran.expired_date,
         data_pembayaran.bank, data_pembayaran.va_number, data_pembayaran.permata_va_number, data_pembayaran.payment_code, data_pembayaran.bill_key, 
         data_pembayaran.biller_code, data_pembayaran.pdf_url, data_pembayaran.status_code, paket.name as nama_paket, paket.price as harga_paket
