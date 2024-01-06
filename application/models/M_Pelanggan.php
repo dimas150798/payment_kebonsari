@@ -182,4 +182,80 @@ class M_Pelanggan extends CI_Model
         $invoice = "lc" . $no;
         return $invoice;
     }
+
+
+
+    // Name PPPOE
+    public function KodeNamePppoe()
+    {
+        // Query untuk mendapatkan kode terakhir dari database
+        $sqlExistingCode = "SELECT MAX(name_pppoe) AS existingCode FROM client WHERE MID(name_pppoe, 4, 4)";
+        $queryExistingCode = $this->db->query($sqlExistingCode);
+
+        if ($queryExistingCode->num_rows() > 0) {
+            $dataRowExistingCode = $queryExistingCode->row();
+            $existingCode = $dataRowExistingCode->existingCode;
+        } else {
+            $existingCode = "kbs0000"; // Default value jika tidak ada data
+        }
+
+        // Mengambil angka dari kode yang diperoleh dari database
+        $existingNumber = (int)substr($existingCode, 3, 4);
+
+        // Membuat kueri SQL dengan klausa WHERE
+        $sql = "SELECT MAX(MID(name_pppoe, 4, 4)) AS invoiceID 
+        FROM client 
+        WHERE MID(name_pppoe, 4, 4) = $existingNumber";
+
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0) {
+            $dataRow = $query->row();
+            $dataN = ((int)$dataRow->invoiceID) + 1;
+        } else {
+            $dataN = 1;
+        }
+
+        $no = sprintf("%'.04d", $dataN);
+
+        $invoice = "kbs" . $no . '-';
+        return $invoice;
+    }
+
+    // Name Pelanggan
+    public function KodePelangganNew()
+    {
+        // Query untuk mendapatkan kode terakhir dari database
+        $sqlExistingCode = "SELECT MAX(name_pppoe) AS existingCode FROM client WHERE MID(name_pppoe, 4, 4)";
+        $queryExistingCode = $this->db->query($sqlExistingCode);
+
+        if ($queryExistingCode->num_rows() > 0) {
+            $dataRowExistingCode = $queryExistingCode->row();
+            $existingCode = $dataRowExistingCode->existingCode;
+        } else {
+            $existingCode = "kbs0000"; // Default value jika tidak ada data
+        }
+
+        // Mengambil angka dari kode yang diperoleh dari database
+        $existingNumber = (int)substr($existingCode, 3, 4);
+
+        // Membuat kueri SQL dengan klausa WHERE
+        $sql = "SELECT MAX(MID(name_pppoe, 4, 4)) AS invoiceID 
+             FROM client 
+             WHERE MID(name_pppoe, 4, 4) = $existingNumber";
+
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0) {
+            $dataRow = $query->row();
+            $dataN = ((int)$dataRow->invoiceID) + 1;
+        } else {
+            $dataN = 1;
+        }
+
+        $no = sprintf("%'.04d", $dataN);
+
+        $invoice = "kbs" . $no;
+        return $invoice;
+    }
 }

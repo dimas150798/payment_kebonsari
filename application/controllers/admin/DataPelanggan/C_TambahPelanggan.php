@@ -40,6 +40,7 @@ class C_TambahPelanggan extends CI_Controller
         $phone = $this->input->post('phone');
         $name = $this->input->post('name');
         $id_paket = $this->input->post('id_paket');
+        $kode_pppoe = $this->input->post('kode_pppoe');
         $name_pppoe = $this->input->post('name_pppoe');
         $password_pppoe = $this->input->post('password_pppoe');
         $address = $this->input->post('address');
@@ -49,6 +50,8 @@ class C_TambahPelanggan extends CI_Controller
         $description = $this->input->post('description');
         $id_sales = $this->input->post('id_sales');
         $biaya_instalasi = $this->input->post('biaya_instalasi');
+
+        $kode_name_pppoe = $kode_pppoe . $name_pppoe;
 
         $GetDataPaket = $this->M_Paket->GetDataPaket($id_paket);
 
@@ -71,7 +74,7 @@ class C_TambahPelanggan extends CI_Controller
             'longitude'      => 0,
             'name'           => $name,
             'id_paket'       => $id_paket,
-            'name_pppoe'     => $name_pppoe,
+            'name_pppoe'     => $kode_name_pppoe,
             'password_pppoe' => $password_pppoe,
             'address'        => $address,
             'email'          => $email,
@@ -90,7 +93,7 @@ class C_TambahPelanggan extends CI_Controller
             'longitude'      => 0,
             'name'           => $name,
             'id_paket'       => $id_paket,
-            'name_pppoe'     => $name_pppoe,
+            'name_pppoe'     => $kode_name_pppoe,
             'password_pppoe' => $password_pppoe,
             'address'        => $address,
             'email'          => $email,
@@ -106,7 +109,7 @@ class C_TambahPelanggan extends CI_Controller
             'gross_amount'     => $price_paket,
             'biaya_admin'      => '0',
             'biaya_instalasi'  => $biaya_instalasi,
-            'nama'             => $name_pppoe,
+            'nama'             => $kode_name_pppoe,
             'paket'            => $name_paket,
             'nama_admin'       => 'Admin Infly',
             'keterangan'       => 'Registrasi Baru',
@@ -120,7 +123,7 @@ class C_TambahPelanggan extends CI_Controller
             'gross_amount'     => $price_paket,
             'biaya_admin'      => '0',
             'biaya_instalasi'  => $biaya_instalasi,
-            'nama'             => $name_pppoe,
+            'nama'             => $kode_name_pppoe,
             'paket'            => $name_paket,
             'nama_admin'       => 'Admin Infly',
             'keterangan'       => 'Registrasi Baru',
@@ -135,7 +138,7 @@ class C_TambahPelanggan extends CI_Controller
         $data['DataSales'] = $this->M_Sales->DataSales();
 
         // Check name pppoe duplicate
-        $checkDuplicate = $this->M_Pelanggan->CheckDuplicatePelanggan($name_pppoe);
+        $checkDuplicate = $this->M_Pelanggan->CheckDuplicatePelanggan($kode_name_pppoe);
 
         // Check duplicate code
         $checkDuplicateCode = $this->M_Pelanggan->CheckDuplicateCode($order_id);
@@ -161,7 +164,7 @@ class C_TambahPelanggan extends CI_Controller
             $this->load->view('admin/DataPelanggan/V_TambahPelanggan', $data);
             $this->load->view('template/V_FooterPelanggan', $data);
         } else {
-            if ($name_pppoe == $checkDuplicate->name_pppoe) {
+            if ($name_pppoe == $checkDuplicate->kode_name_pppoe) {
                 // Notifikasi Duplicate Name
                 $this->session->set_flashdata('DuplicateName_icon', 'error');
                 $this->session->set_flashdata('DuplicateName_title', 'Gagal Tambah Pelanggan');
@@ -177,7 +180,7 @@ class C_TambahPelanggan extends CI_Controller
                     // Tambah Pelanggan Ke Mikrotik
                     $api = connect();
                     $api->comm('/ppp/secret/add', [
-                        "name"     => $name_pppoe,
+                        "name"     => $kode_name_pppoe,
                         "password" => $password_pppoe,
                         "service"  => "pppoe",
                         "profile"  => $profile_paket,
@@ -201,7 +204,7 @@ class C_TambahPelanggan extends CI_Controller
                     // Tambah Pelanggan Ke Mikrotik
                     $api = connect();
                     $api->comm('/ppp/secret/add', [
-                        "name"     => $name_pppoe,
+                        "name"     => $kode_name_pppoe,
                         "password" => $password_pppoe,
                         "service"  => "pppoe",
                         "profile"  => $profile_paket,
