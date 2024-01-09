@@ -115,9 +115,10 @@ class C_BelumLunas extends CI_Controller
                 $StatusMikrotik = $dataCustomer['disabled'] == 'true';
 
                 $row = array();
-                $row[] = ++$no;
+                $row[] = '<div class="text-center">' . ++$no . '</div>';
+                $row[] = '<div class="text-center">' . ($GrossAmount ? 'Tanggal ' . $dataCustomer['tanggal'] : changeDateFormat('d-m-Y / H:i:s', $dataCustomer['transaction_time'])) . '</div>';
                 $row[] = $dataCustomer['name_pppoe'];
-                $row[] = '<div class="text-center">' . ($GrossAmount ? 'Penagihan Tanggal ' . $dataCustomer['tanggal'] : changeDateFormat('d-m-Y / H:i:s', $dataCustomer['transaction_time'])) . '</div>';
+                $row[] = $dataCustomer['name'];
                 $row[] = '<div class="text-center">' . strtoupper($dataCustomer['nama_paket']) . '</div>';
                 $row[] = '<div class="text-center">' . 'Rp. ' . number_format($dataCustomer['harga_paket'], 0, ',', '.') . '</div>';
                 $row[] = '<div class="text-center">' . ($StatusMikrotik ? '<span class="badge bg-danger">DISABLED</span>' : '<span class="badge bg-success">ENABLE</span>') . '</div>';

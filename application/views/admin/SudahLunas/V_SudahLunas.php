@@ -11,13 +11,13 @@ $months = array(
         <div class="menuatas">
             <div class="row align-items-center justify-content-between">
                 <div class="col-xl-6">
-                    <img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/list.svg" alt="Bootstrap" ...> <b class="textmenuatas">Sudah Lunas</b>
+                    <img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/list.svg" alt="Bootstrap" ...> <b class="fw-bold fs-4">Sudah Lunas</b>
                 </div>
                 <div class="col-12 col-xl-auto mt-2">
-                    <a class="btn buttonmenuatas" href="<?php echo base_url('admin/SudahLunas/C_ExportExcel') ?>"><img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/file-excel-fill.svg" alt="Bootstrap" ...> Export Excel
+                    <a class="btn btn-warning fw-bold" href="<?php echo base_url('admin/SudahLunas/C_ExportExcel') ?>">Export Excel
                     </a>
-                    <a class="btn buttonmenuatas" href="<?php echo base_url('admin/SudahLunas/C_ExportExcelAll') ?>"><img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/file-excel-fill.svg" alt="Bootstrap" ...> Export Excel All
-                    </a>
+                    <!-- <a class="btn btn-danger fw-bold" href="<?php echo base_url('admin/SudahLunas/C_ExportExcelAll') ?>">Export Excel All
+                    </a> -->
                 </div>
             </div>
         </div>
@@ -28,8 +28,8 @@ $months = array(
                 <form class="form-inline" action="<?php echo base_url('admin/SudahLunas/C_SudahLunas') ?>" method=" get">
                     <div class="row">
                         <div class="col-md-2">
-                            <label for="tahun">Tahun : </label>
-                            <select class="form-control text-center" name="tahun" required>
+                            <label for="tahun" class="fw-bold fs-5 mt-2 mb-2">Tahun : </label>
+                            <select class="form-control text-center fw-bold fs-6" name="tahun" required>
                                 <?php
                                 if ($tahunGET == NULL) {
                                     echo '<option value="" disabled selected>-- Pilih Tahun --</option>';
@@ -57,8 +57,8 @@ $months = array(
                         </div>
 
                         <div class="col-md-2">
-                            <label for="bulan">Bulan : </label>
-                            <select class="form-control text-center" name="bulan" required>
+                            <label for="bulan" class="fw-bold fs-5 mt-2 mb-2">Bulan : </label>
+                            <select class="form-control text-center fw-bold fs-6" name="bulan" required>
                                 <?php
                                 if ($bulanGET == NULL) {
                                     echo '<option value="" disabled>-- Pilih Bulan --</option>';
@@ -101,10 +101,10 @@ $months = array(
 
                         <div class="row">
                             <div class="col-6">
-                                <p class="dataPencarian">Data</p>
+                                <p class="fw-bold fs-5">Data</p>
                             </div>
                             <div class="col-6">
-                                <p class="dataPencarian">:
+                                <p class="fw-bold fs-5">:
                                     <?php
                                     if ($tahunGET == NULL && $bulanGET == NULL) {
                                         echo $months[$bulan] . ' / ' . $tahun;
@@ -117,20 +117,20 @@ $months = array(
 
                         <div class="row">
                             <div class="col-6">
-                                <p class="dataPencarian">Sudah Lunas</p>
+                                <p class="fw-bold fs-5">Sudah Lunas</p>
                             </div>
                             <div class="col-6">
-                                <p class="dataPencarian">:
+                                <p class="fw-bold fs-5">:
                                     <?php echo $JumlahSudahLunas; ?></p>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-6">
-                                <p class="dataPencarian">Nominal</p>
+                                <p class="fw-bold fs-5">Nominal</p>
                             </div>
                             <div class="col-6">
-                                <p class="dataPencarian">: Rp.
+                                <p class="fw-bold fs-5">: Rp.
                                     <?php echo number_format($NominalSudahLunas, 0, ',', '.') ?></p>
                             </div>
                         </div>
@@ -160,13 +160,13 @@ $months = array(
                                 <thead>
                                     <tr>
                                         <th width="5%">No</th>
-                                        <th width="20%">Nama</th>
-                                        <th width="20%" class="text-center">Tanggal</th>
+                                        <th width="15%">Nama</th>
+                                        <th width="15%" class="text-center">Tanggal</th>
                                         <th width="10%" class="text-center">Paket</th>
-                                        <th width="15%">Tarif</th>
-                                        <th width="10%">Payment By</th>
-                                        <th width="10%">Status</th>
-                                        <th width="10%" class="text-center">Action</th>
+                                        <th width="15%" class="text-center">Tarif</th>
+                                        <th width="15%" class="text-center">Payment By</th>
+                                        <th width="10%" class="text-center">Status</th>
+                                        <th width="5%" class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

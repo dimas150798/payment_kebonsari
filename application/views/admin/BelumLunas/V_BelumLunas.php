@@ -15,16 +15,16 @@ if (!function_exists('changeDateFormat')) {
         <div class="menuatas">
             <div class="row align-items-center justify-content-between">
                 <div class="col-xl-6">
-                    <img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/list.svg" alt="Bootstrap" ...> <b class="textmenuatas">Belum Lunas</b>
+                    <img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/list.svg" alt="Bootstrap" ...> <b class="fw-bold fs-4">Belum Lunas</b>
                 </div>
                 <div class="col-12 col-xl-auto mt-2">
                     <div class="container">
                         <div class="row">
-                            <div class="col-6">
-                                <a class="btn buttonmenuatas btn-sm" href="<?php echo base_url('admin/BelumLunas/C_ExportExcel') ?>"><img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/file-excel-fill.svg" alt="Bootstrap" ...> Export Excel
+                            <div class="col-6 col-lg-6">
+                                <a class="btn btn-warning fw-bold" href="<?php echo base_url('admin/BelumLunas/C_ExportExcel') ?>"> Export Excel
                                 </a>
                             </div>
-                            <div class="col-6">
+                            <div class="col-6 col-lg-6">
                                 <select name="forma" id='SelectOption' class="form-control">
                                     <option value="monthly"><a href="#">Monthly</a></option>
                                     <option value="day"><a href="#">Day</a></option>
@@ -42,9 +42,9 @@ if (!function_exists('changeDateFormat')) {
             <div class="row mt-3 mb-2">
                 <form class="form-inline" action="<?php echo base_url('admin/BelumLunas/C_BelumLunas') ?>" method=" get">
                     <div class="row">
-                        <div class="col-md-2">
-                            <label for="tahun">Tahun : </label>
-                            <select class="form-control text-center" name="tahun" required>
+                        <div class="col-12 col-lg-2">
+                            <label for="tahun" class="fw-bold fs-5 mt-2 mb-2">Tahun : </label>
+                            <select class="form-control text-center fw-bold fs-6" name="tahun" required>
                                 <?php
                                 if ($tahunGET == NULL) {
                                     echo '<option value="" disabled selected>-- Pilih Tahun --</option>';
@@ -71,9 +71,9 @@ if (!function_exists('changeDateFormat')) {
                             </select>
                         </div>
 
-                        <div class="col-md-2">
-                            <label for="bulan">Bulan : </label>
-                            <select class="form-control text-center" name="bulan" required>
+                        <div class="col-12 col-lg-2">
+                            <label for="bulan" class="fw-bold fs-5 mt-2 mb-2">Bulan : </label>
+                            <select class="form-control text-center fw-bold fs-6" name="bulan" required>
                                 <?php
                                 if ($bulanGET == NULL) {
                                     echo '<option value="" disabled>-- Pilih Bulan --</option>';
@@ -116,10 +116,10 @@ if (!function_exists('changeDateFormat')) {
 
                         <div class="row">
                             <div class="col-6">
-                                <p class="dataPencarian">Data</p>
+                                <p class="fw-bold fs-5">Data</p>
                             </div>
                             <div class="col-6">
-                                <p class="dataPencarian">:
+                                <p class="fw-bold fs-5">:
                                     <?php if ($tahunGET == NULL) {
                                         echo $months[$bulan] . ' / ' . $tahun;
                                     } else {
@@ -130,21 +130,21 @@ if (!function_exists('changeDateFormat')) {
 
                         <div class="row">
                             <div class="col-6">
-                                <p class="dataPencarian">Belum Lunas</p>
+                                <p class="fw-bold fs-5">Belum Lunas</p>
                             </div>
                             <div class="col-6">
-                                <p class="dataPencarian">:
+                                <p class="fw-bold fs-5">:
                                     <?php echo $JumlahBelumLunas; ?></p>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-6">
-                                <p class="dataPencarian">Nominal</p>
+                                <p class="fw-bold fs-5">Nominal</p>
                             </div>
                             <div class="col-6">
 
-                                <p class="dataPencarian">: Rp.
+                                <p class="fw-bold fs-5">: Rp.
                                     <?php echo number_format($NominalBelumLunas, 0, ',', '.') ?></p>
                             </div>
                         </div>
@@ -175,12 +175,13 @@ if (!function_exists('changeDateFormat')) {
                                 <thead>
                                     <tr>
                                         <th width="5%">No</th>
-                                        <th width="20%">Nama</th>
-                                        <th width="20%" class="text-center">Tanggal</th>
-                                        <th width="20%" class="text-center">Paket</th>
-                                        <th width="20%" class="text-center">Tarif</th>
-                                        <th width="20%" class="text-center">Status</th>
-                                        <th width="15%" class="text-center">Opsi</th>
+                                        <th width="5%" class="text-center">Tanggal</th>
+                                        <th width="20%">Nama PPPOE</th>
+                                        <th width="20%">Nama Customer</th>
+                                        <th width="10%" class="text-center">Paket</th>
+                                        <th width="10%" class="text-center">Tarif</th>
+                                        <th width="10%" class="text-center">Status</th>
+                                        <th width="5%" class="text-center">Opsi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
