@@ -16,32 +16,16 @@
    font-size: 19px;
 }
 
-.buttonmenuatas{
-   background: #a9a9a9;
-   border: 0;
-   color: #fdfdfd;
-   padding: 7px;
-   font-size: 12px;
-   border-radius: 4px;
-   transition: 0.4s ease;
-}
-
-.buttonmenuatas:hover {
-   background: #2222;
-   color: #5c74ac;
-   cursor: pointer;
-}
-
 .textPencarian{
    background: #d0f4fc;
    padding: 15px;
    margin-bottom: 10px;
 }
 
-.dataPencarian{
+/* .dataPencarian{
    font-size: 15px;
    font-weight: bold;
-}
+} */
 
 .textTables{
    font-size: 17px;

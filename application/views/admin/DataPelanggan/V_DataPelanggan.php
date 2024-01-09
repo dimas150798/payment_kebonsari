@@ -15,16 +15,16 @@ if (!function_exists('changeDateFormat')) {
         <div class="menuatas">
             <div class="row align-items-center justify-content-between">
                 <div class="col-xl-6">
-                    <img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/list.svg" alt="Bootstrap" ...> <b class="textmenuatas">Data Pelanggan</b>
+                    <img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/list.svg" alt="Bootstrap" ...> <b class="textmenuatas fw-bold fs-5">Data Customer</b>
                 </div>
                 <div class="col-12 col-xl-auto mt-2">
-                    <a class="btn buttonmenuatas" href="<?php echo base_url('admin/DataPelanggan/C_TambahPelanggan') ?>"><img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/plus-circle.svg" alt="Bootstrap" ...> Tambah Pelanggan
+                    <a class="btn btn-success fw-bold" href="<?php echo base_url('admin/DataPelanggan/C_TambahPelanggan') ?>">Tambah Pelanggan
                     </a>
-                    <a class="btn buttonmenuatas" href="<?php echo base_url('admin/DataPelanggan/C_ImportExcel/DeletePelanggan') ?>"><img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/file-earmark-excel-fill.svg" alt="Bootstrap" ...> Delete Pelanggan
+                    <a class="btn btn-danger fw-bold" href="<?php echo base_url('admin/DataPelanggan/C_ImportExcel/DeletePelanggan') ?>"> Delete
                     </a>
                     <!-- <a class="btn buttonmenuatas" href="<?php echo base_url('admin/DataPelanggan/C_ImportExcel') ?>"><img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/file-earmark-excel-fill.svg" alt="Bootstrap" ...> Import Excel
                     </a> -->
-                    <a class="btn buttonmenuatas" href="<?php echo base_url('admin/DataPelanggan/C_ExportExcel') ?>"><img src="<?php echo base_url(); ?>vendor/bootstrap-icons/icons/file-earmark-excel-fill.svg" alt="Bootstrap" ...> Export Excel
+                    <a class="btn btn-warning fw-bold" href="<?php echo base_url('admin/DataPelanggan/C_ExportExcel') ?>">Export Excel
                     </a>
                 </div>
             </div>
@@ -37,11 +37,10 @@ if (!function_exists('changeDateFormat')) {
                     <div class="textPencarian">
                         <div class="row">
                             <div class="col-6">
-                                <p class="dataPencarian">Total Customer</p>
+                                <h3>Total Customer</h3>
                             </div>
                             <div class="col-6">
-                                <p class="dataPencarian">:
-                                    <?php echo $JumlahPelanggan; ?></p>
+                                <h3>: <?php echo $JumlahPelanggan; ?></h3>
                             </div>
                         </div>
                     </div>
@@ -50,7 +49,7 @@ if (!function_exists('changeDateFormat')) {
 
             <div class="row">
                 <div class="col-12">
-                    <h5 class="text-center font-weight-light mt-2 mb-2">
+                    <h5 class="text-center font-weight-light mt-2 mb-2 fw-bold">
                         <?php echo $this->session->flashdata('pesan'); ?>
                     </h5>
                 </div>
@@ -59,29 +58,30 @@ if (!function_exists('changeDateFormat')) {
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-3">
-                        <div class="card-header">
+                        <div class="card-header fw-bold fs-5">
                             <i class="fas fa-table me-1"></i>
-                            Data Pelanggan
+                            Data Customer
                         </div>
                         <div class="card-body">
                             <table id="mytable" class="table table-bordered responsive nowrap" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th width="5%">No</th>
-                                        <th width="10%">Nama Customer</th>
-                                        <th width="10%">Name PPPOE</th>
-                                        <th class="text-center" width="20%">Phone</th>
-                                        <th class="text-center" width="10%">Nama Paket</th>
-                                        <th class="text-center" width="20%">Date Registrasi</th>
-                                        <th class="text-center" width="10%">sales</th>
-                                        <th class="text-center" width="10%">Status</th>
-                                        <th class="text-center" width="5%">Action</th>
+                                        <th class="text-center">No</th>
+                                        <th>Nama Customer</th>
+                                        <th>Name PPPOE</th>
+                                        <th class="text-center">Telepon</th>
+                                        <th class="text-center">Nama Paket</th>
+                                        <th class="text-center">Tgl Regis</th>
+                                        <th class="text-center">Sales</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    <!-- Your table body content goes here -->
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>

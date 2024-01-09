@@ -186,7 +186,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-lg-4 mt-4">
-                                    <label for="address" class="form-label fw-bold fs-5">Alamat Customer : <span class="text-danger">*</span></label>
+                                    <label for="address" class="form-label fw-bold fs-5"> Alamat Customer : <span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-secondary"><i class="bi bi-house-fill"></i></span>
                                         <textarea class="form-control fw-bold fs-6" name="address" id="address" cols="10" rows="3" placeholder="Masukkan Alamat Customer..."></textarea>
