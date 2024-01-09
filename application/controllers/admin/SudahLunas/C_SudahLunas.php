@@ -119,6 +119,7 @@ class C_SudahLunas extends CI_Controller
 
                 $row = array();
                 $row[] = '<div class="text-center">' .  ++$no . '</div>';
+                $row[] = $dataCustomer['name_pppoe'];
                 $row[] = $dataCustomer['name'];
                 $row[] = '<div class="text-center">' . ($GrossAmount ? 'Penagihan Tanggal ' . $dataCustomer['tanggal'] : changeDateFormat('d-m-Y / H:i:s', $dataCustomer['created_at'])) . '</div>';
                 $row[] = '<div class="text-center">' . strtoupper($dataCustomer['nama_paket']) . '</div>';
