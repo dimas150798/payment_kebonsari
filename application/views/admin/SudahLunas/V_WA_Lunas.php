@@ -27,7 +27,7 @@ if (!function_exists('changeDateFormat')) {
 
         <div class="container">
             <div class="card mb-3 mt-3">
-                <div class="card-header fw-bold fs-5">
+                <div class="card-header bg-primary text-white fw-bold fs-5">
                     <i class="fas fa-table me-1"></i>
                     Data Customer
                 </div>
@@ -49,21 +49,21 @@ if (!function_exists('changeDateFormat')) {
                                     <div class="col-sm-12 col-lg-4 mt-4">
                                         <label for="name" class="form-label fw-bold fs-5"> Nama Customer : <span class="text-danger">*</span></label>
                                         <div class="input-group">
-                                            <span class="input-group-text bg-secondary"><i class="bi bi-person-bounding-box"></i></span>
+                                            <span class="input-group-text bg-secondary"><i class="bi bi-person-bounding-box text-white"></i></span>
                                             <input type="text" class="form-control bg-warning fw-bold" name="name" value="<?php echo $data['name'] ?>" placeholder="Data Kosong" readonly>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-lg-4 mt-4">
                                         <label for="nama_pppoe" class="form-label fw-bold fs-5"> Name PPPOE : <span class="text-danger">*</span></label>
                                         <div class="input-group">
-                                            <span class="input-group-text bg-secondary"><i class="bi bi-person-bounding-box"></i></span>
+                                            <span class="input-group-text bg-secondary"><i class="bi bi-person-bounding-box text-white"></i></span>
                                             <input type="text" class="form-control bg-warning fw-bold" name="name_pppoe" value="<?php echo $data['name_pppoe'] ?>" placeholder="Data Kosong" readonly>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-lg-4 mt-4">
-                                        <label for="code_client" class="form-label fw-bold fs-5"> Kode Pelanggan : <span class="text-danger">*</span></label>
+                                        <label for="code_client" class="form-label fw-bold fs-5"> Kode Customer : <span class="text-danger">*</span></label>
                                         <div class="input-group">
-                                            <span class="input-group-text bg-secondary"><i class="bi bi-bookmarks-fill"></i></span>
+                                            <span class="input-group-text bg-secondary"><i class="bi bi-bookmarks-fill text-white"></i></span>
                                             <input type="text" class="form-control bg-warning fw-bold" name="code_client" value="<?php echo $data['code_client'] ?>" placeholder="Data Kosong" readonly>
                                         </div>
                                     </div>
@@ -73,21 +73,21 @@ if (!function_exists('changeDateFormat')) {
                                     <div class="col-sm-12 col-lg-4 mt-4">
                                         <label for="bulan_penagihan" class="form-label fw-bold fs-5"> Penagihan Bulan : <span class="text-danger">*</span></label>
                                         <div class="input-group">
-                                            <span class="input-group-text bg-secondary"><i class="bi bi-bookmarks-fill"></i></span>
+                                            <span class="input-group-text bg-secondary"><i class="bi bi-bookmarks-fill text-white"></i></span>
                                             <input type="text" class="form-control bg-warning fw-bold" name="bulan_transaksi" value="<?php echo $months[$data['bulan_transaksi']] ?>" placeholder="Data Kosong" readonly>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-lg-4 mt-4">
                                         <label for="phone" class="form-label fw-bold fs-5"> No. Telepon : <span class="text-danger">*</span></label>
                                         <div class="input-group">
-                                            <span class="input-group-text bg-secondary"><i class="bi bi-telephone-fill"></i></span>
+                                            <span class="input-group-text bg-secondary"><i class="bi bi-telephone-fill text-white"></i></span>
                                             <input type="text" class="form-control bg-warning fw-bold" name="phone" value="<?php echo $data['phone'] ?>" placeholder="Data Kosong" readonly>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-lg-4 mt-4">
                                         <label for="" class="form-label fw-bold fs-5"> Paket Wifi : <span class="text-danger">*</span></label>
                                         <div class="input-group">
-                                            <span class="input-group-text bg-secondary"><i class="bi bi-wifi"></i></span>
+                                            <span class="input-group-text bg-secondary"><i class="bi bi-wifi text-white"></i></span>
                                             <input type="text" class="form-control bg-warning fw-bold" name="" value="<?php echo $data['nama_paket'] ?> / Rp.  <?php echo number_format($data['harga_paket'], 0, ',', '.') ?>" placeholder="Data Kosong" readonly>
                                         </div>
                                     </div>

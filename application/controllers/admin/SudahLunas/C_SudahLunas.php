@@ -142,8 +142,8 @@ class C_SudahLunas extends CI_Controller
                                 Opsi
                             </button>
                             <div class="dropdown-menu text-black" style="background-color:aqua;">
-                                <a onclick="KwitansiLunas(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"></i> Kwitansi</a>
-                                <a onclick="KirimWA_Lunas(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"></i> Kirim WA Lunas</a>
+                                <a onclick="KwitansiLunas(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"><i class="bi bi-receipt-cutoff"></i> Kwitansi</a>
+                                <a onclick="KirimWA_Lunas(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"><i class="bi bi-whatsapp"></i> Kirim WA Lunas</a>
                             </div>
                         </div>
                     </div>';
