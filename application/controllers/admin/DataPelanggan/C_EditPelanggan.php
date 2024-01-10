@@ -69,7 +69,7 @@ class C_EditPelanggan extends CI_Controller
         );
 
         $namePPPOE_old      = array(
-            'nama'          => $name_pppoe_session
+            'nama'          => $name_pppoe_old
         );
 
 
