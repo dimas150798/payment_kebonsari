@@ -15,7 +15,7 @@
 
         <div class="container-fluid">
             <div class="card mb-3 mt-3">
-                <div class="card-header bg-primary fs-5 fw-bold">
+                <div class="card-header bg-primary fs-5 fw-bold text-white">
                     <i class="fas fa-table me-1"></i>
                     Data Customer
                 </div>
@@ -34,7 +34,7 @@
                                 <div class="col-sm-12 col-lg-4 mt-4">
                                     <label for="name" class="form-label fw-bold fs-5"> Nama Customer : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-person-bounding-box"></i></span>
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-person-bounding-box text-white"></i></span>
                                         <input type="text" class="form-control fw-bold fs-6" name="name" id="name" value="" placeholder="Masukkan Nama Customer...">
                                     </div>
                                     <div class="bg-danger">
@@ -44,7 +44,7 @@
                                 <div class="col-sm-12 col-lg-4 mt-4">
                                     <label for="start_date" class="form-label fw-bold fs-5"> Tanggal Registrasi : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-calendar-check-fill"></i></span>
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-calendar-check-fill text-white"></i></span>
                                         <input type="date" class="form-control fw-bold fs-6" name="start_date" id="start_date" value="">
                                     </div>
                                     <div class="bg-danger">
@@ -54,7 +54,7 @@
                                 <div class="col-sm-12 col-lg-4 mt-4">
                                     <label for="code_client" class="form-label fw-bold fs-5"> Kode Customer : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-bookmarks-fill"></i></span>
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-bookmarks-fill text-white"></i></span>
                                         <input type="text" class="form-control fw-bold fs-6" name="code_client" id="code_client" value="<?php echo $this->M_Pelanggan->KodePelangganNew() ?>" placeholder="Masukkan Kode Customer...">
                                     </div>
                                     <div class="bg-danger">
@@ -67,7 +67,7 @@
                                 <div class="col-sm-12 col-lg-2 mt-4">
                                     <label for="kode_pppoe" class="form-label fw-bold fs-5"> Kode PPPOE : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-person-bounding-box"></i></span>
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-person-bounding-box text-white"></i></span>
                                         <input type="text" class="form-control fw-bold fs-6" name="kode_pppoe" id="kode_pppoe" value="<?php echo $this->M_Pelanggan->KodeNamePppoe() ?>" placeholder="Masukkan Kode PPPOE...">
                                     </div>
                                     <div class="bg-danger">
@@ -78,8 +78,8 @@
                                 <div class="col-sm-12 col-lg-2 mt-4">
                                     <label for="name_pppoe" class="form-label fw-bold fs-5"> Name PPPOE : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-person-bounding-box"></i></span>
-                                        <input type="text" class="form-control fw-bold fs-6" name="name_pppoe" id="name_pppoe" value="" placeholder="Masukkan Nama Customer...">
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-person-bounding-box text-white"></i></span>
+                                        <input type="text" class="form-control fw-bold fs-6" name="name_pppoe" id="name_pppoe" value="" placeholder="Masukkan Name PPPOE...">
                                     </div>
                                     <div class="bg-danger">
                                         <small class="text-white"><?php echo form_error('name_pppoe'); ?></small>
@@ -89,8 +89,8 @@
                                 <div class="col-sm-12 col-lg-4 mt-4">
                                     <label for="password_pppoe" class="form-label fw-bold fs-5"> Password PPPOE : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-eye-fill"></i></span>
-                                        <input type="text" class="form-control fw-bold fs-6" name="password_pppoe" id="password_pppoe" value="" placeholder="Masukkan Nama Customer...">
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-eye-fill text-white"></i></span>
+                                        <input type="text" class="form-control fw-bold fs-6" name="password_pppoe" id="password_pppoe" value="" placeholder="Masukkan Password PPPOE...">
                                     </div>
                                     <div class="bg-danger">
                                         <small class="text-white"><?php echo form_error('password_pppoe'); ?></small>
@@ -99,7 +99,7 @@
                                 <div class="col-sm-12 col-lg-4 mt-4">
                                     <label for="phone" class="form-label fw-bold fs-5"> No. Telepon : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-telephone-fill"></i></span>
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-telephone-fill text-white"></i></span>
                                         <input type="text" class="form-control fw-bold fs-6" name="phone" id="phone" value="" placeholder="Masukkan Telepon Customer...">
                                     </div>
                                     <div class="bg-danger">
@@ -112,7 +112,7 @@
                                 <div class="col-sm-12 col-lg-2 mt-4">
                                     <label for="id_paket" class="form-label fw-bold fs-5"> Paket Internet : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-wifi"></i></span>
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-wifi text-white"></i></span>
                                         <select id="id_paket" name="id_paket" class="form-control fw-bold fs-6" required>
                                             <option value="">Pilih Paket :</option>
                                             <?php foreach ($DataPaket as $dataPaket) : ?>
@@ -129,7 +129,7 @@
                                 <div class="col-sm-12 col-lg-2 mt-4">
                                     <label for="biaya_instalasi" class="form-label fw-bold fs-5"> Biaya Instalasi : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-cash"></i></span>
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-cash text-white"></i></span>
                                         <select id="biaya_instalasi" name="biaya_instalasi" class="form-control fw-bold fs-6" required>
                                             <option value="">--- Pilih Biaya ---</optxion>
                                             <option value="0">Rp. 0</option>
@@ -141,7 +141,7 @@
                                 <div class="col-sm-12 col-lg-4 mt-4">
                                     <label for="id_area" class="form-label fw-bold fs-5"> Kode DP dan Area : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-bookmarks-fill"></i></span>
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-bookmarks-fill text-white"></i></span>
                                         <select id="id_area" name="id_area" class="form-control fw-bold fs-6" required>
                                             <option value="">Pilih Area :</option>
                                             <?php foreach ($DataArea as $dataArea) : ?>
@@ -158,7 +158,7 @@
                                 <div class="col-sm-12 col-lg-4 mt-4">
                                     <label for="id_sales" class="form-label fw-bold fs-5"> Sales : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-person-circle"></i></span>
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-person-circle text-white"></i></span>
                                         <select id="id_sales" name="id_sales" class="form-control" required>
                                             <option value="">Pilih Sales :</option>
                                             <?php foreach ($DataSales as $dataSales) : ?>
@@ -178,7 +178,7 @@
                                 <div class="col-sm-12 col-lg-4 mt-4">
                                     <label for="email" class="form-label fw-bold fs-5"> Email Customer : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-envelope-at-fill"></i></span>
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-envelope-at-fill text-white"></i></span>
                                         <input type="text" class="form-control fw-bold fs-6" name="email" id="email" value="" placeholder="Masukkan Email Customer...">
                                     </div>
                                     <div class="bg-danger">
@@ -188,7 +188,7 @@
                                 <div class="col-sm-12 col-lg-4 mt-4">
                                     <label for="address" class="form-label fw-bold fs-5"> Alamat Customer : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-house-fill"></i></span>
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-house-fill text-white"></i></span>
                                         <textarea class="form-control fw-bold fs-6" name="address" id="address" cols="10" rows="3" placeholder="Masukkan Alamat Customer..."></textarea>
                                     </div>
                                     <div class="bg-danger">
@@ -198,8 +198,8 @@
                                 <div class="col-sm-12 col-lg-4 mt-4">
                                     <label for="description" class="form-label fw-bold fs-5">Keterangan : <span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-secondary"><i class="bi bi-bookmarks-fill"></i></span>
-                                        <textarea class="form-control" name="description" id="description" cols="10" rows="3" placeholder="Masukkan Keterangan Customer..."></textarea>
+                                        <span class="input-group-text bg-secondary"><i class="bi bi-bookmarks-fill text-white"></i></span>
+                                        <textarea class="form-control" name="description" id="description" cols="10" rows="3" placeholder="Masukkan Keterangan..."></textarea>
                                     </div>
                                     <div class="bg-danger">
                                         <small class="text-white"><?php echo form_error('description'); ?></small>
