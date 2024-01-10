@@ -1,6 +1,6 @@
 <?php
 $months = array(
-    01 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Mei', 6 => 'Juni',
+    1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Mei', 6 => 'Juni',
     7 => 'Juli', 8 => 'Agustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'
 );
 ?>
@@ -31,26 +31,13 @@ $months = array(
                             <label for="tahun" class="fw-bold fs-5 mt-2 mb-2">Tahun : </label>
                             <select class="form-control text-center fw-bold fs-6" name="tahun" required>
                                 <?php
-                                if ($tahunGET == NULL) {
-                                    echo '<option value="" disabled selected>-- Pilih Tahun --</option>';
+                                $selectedYear = $this->session->userdata('tahunGET') ?: $this->session->userdata('tahun');
 
-                                    for ($i = 2022; $i <= 2025; $i++) {
-                                        if ($tahun == $i) {
-                                            echo '<option selected value=' . $i . '>' . date("Y", mktime(0, 0, 0, 1, 1, $i)) . '</option>' . "\n";
-                                        } else {
-                                            echo '<option value=' . $i . '>' . date("Y", mktime(0, 0, 0, 1, 1, $i)) . '</option>' . "\n";
-                                        }
-                                    }
-                                } else {
-                                    echo '<option value="" disabled>-- Pilih Tahun --</option>';
+                                echo '<option value="" disabled>-- Pilih Tahun --</option>';
 
-                                    for ($i = 2022; $i <= 2025; $i++) {
-                                        if ($tahunGET == $i) {
-                                            echo '<option selected value=' . $i . '>' . date("Y", mktime(0, 0, 0, 1, 1, $i)) . '</option>' . "\n";
-                                        } else {
-                                            echo '<option value=' . $i . '>' . date("Y", mktime(0, 0, 0, 1, 1, $i)) . '</option>' . "\n";
-                                        }
-                                    }
+                                for ($i = 2022; $i <= 2025; $i++) {
+                                    $selected = ($selectedYear == $i) ? 'selected' : '';
+                                    echo '<option ' . $selected . ' value=' . $i . '>' . date("Y", mktime(0, 0, 0, 1, 1, $i)) . '</option>';
                                 }
                                 ?>
                             </select>
@@ -60,28 +47,14 @@ $months = array(
                             <label for="bulan" class="fw-bold fs-5 mt-2 mb-2">Bulan : </label>
                             <select class="form-control text-center fw-bold fs-6" name="bulan" required>
                                 <?php
-                                if ($bulanGET == NULL) {
-                                    echo '<option value="" disabled>-- Pilih Bulan --</option>';
+                                $selectedMonth = $this->session->userdata('bulanGET') ?: $this->session->userdata('bulan');
 
-                                    for ($m = 1; $m <= 12; ++$m) {
-                                        if ($bulan == $m) {
-                                            echo '<option selected value=' . $m . '>' . date('F', mktime(0, 0, 0, $m, 1)) . '</option>' . "\n";
-                                        } else {
-                                            echo '<option  value=' . $m . '>' . date('F', mktime(0, 0, 0, $m, 1)) . '</option>' . "\n";
-                                        }
-                                    }
-                                } else {
-                                    echo '<option value="" disabled>-- Pilih Bulan --</option>';
+                                echo '<option value="" disabled>-- Pilih Bulan --</option>';
 
-                                    for ($m = 1; $m <= 12; ++$m) {
-                                        if ($bulanGET == $m) {
-                                            echo '<option selected value=' . $m . '>' . date('F', mktime(0, 0, 0, $m, 1)) . '</option>' . "\n";
-                                        } else {
-                                            echo '<option  value=' . $m . '>' . date('F', mktime(0, 0, 0, $m, 1)) . '</option>' . "\n";
-                                        }
-                                    }
+                                for ($m = 1; $m <= 12; ++$m) {
+                                    $selected = ($selectedMonth == $m) ? 'selected' : '';
+                                    echo '<option ' . $selected . ' value=' . $m . '>' . date('F', mktime(0, 0, 0, $m, 1)) . '</option>';
                                 }
-
                                 ?>
                             </select>
                         </div>
@@ -106,12 +79,9 @@ $months = array(
                             <div class="col-6">
                                 <p class="fw-bold fs-5">:
                                     <?php
-                                    if ($tahunGET == NULL && $bulanGET == NULL) {
-                                        echo $months[$bulan] . ' / ' . $tahun;
-                                    } else {
-                                        echo $months[$bulanGET] . ' / ' . $tahunGET;
-                                    }
-                                    ?></p>
+                                    echo $months[$bulan] . ' / ' . $tahun;
+                                    ?>
+                                </p>
                             </div>
                         </div>
 

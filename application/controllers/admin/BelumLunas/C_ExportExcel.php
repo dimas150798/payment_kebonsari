@@ -33,32 +33,19 @@ class C_ExportExcel extends CI_Controller
 
     public function index()
     {
-        $bulan      = $this->session->userdata('bulanGET');
-        $tahun      = $this->session->userdata('tahunGET');
-        $tanggal    = $this->session->userdata('TanggalAkhirGET');
+        $bulan = $this->session->userdata('bulanGET') != NULL && $this->session->userdata('bulanGET') != ''
+            ? $this->session->userdata('bulanGET')
+            : $this->session->userdata('bulan');
 
-        if ($bulan == NULL && $tahun == NULL) {
-            date_default_timezone_set("Asia/Jakarta");
-            $bulanGET       = date('m');
-            $tahunGET       = date('Y');
+        $tahun = $this->session->userdata('tahunGET') != NULL && $this->session->userdata('tahunGET') != ''
+            ? $this->session->userdata('tahunGET')
+            : $this->session->userdata('tahun');
 
-            // Menampilkan tanggal pada akhir bulan GET
-            $tanggal_akhir_GET      = cal_days_in_month(CAL_GREGORIAN, $bulanGET, $tahunGET);
+        $TanggalAkhir = $this->session->userdata('TanggalAkhirGET') != NULL && $this->session->userdata('TanggalAkhirGET') != ''
+            ? $this->session->userdata('TanggalAkhirGET')
+            : $this->session->userdata('TanggalAkhir');
 
-            // Menggabungkan tanggal, bulan, tahun
-            $tanggalGET             = $tahunGET . '-' . $bulanGET . '-' . $tanggal_akhir_GET;
-        } else {
-            $bulanGET       = $bulan;
-            $tahunGET       = $tahun;
-
-            // Menampilkan tanggal pada akhir bulan GET
-            $tanggal_akhir_GET      = cal_days_in_month(CAL_GREGORIAN, $bulanGET, $tahunGET);
-
-            // Menggabungkan tanggal, bulan, tahun
-            $tanggalGET             = $tahunGET . '-' . $bulanGET . '-' . $tanggal_akhir_GET;
-        }
-
-        $data = $this->M_BelumLunas->BelumLunas($bulanGET, $tahunGET, $tanggalGET);
+        $data = $this->M_BelumLunas->BelumLunas($bulan, $tahun, $TanggalAkhir);
 
         /* Spreadsheet Init */
         $spreadsheet = new Spreadsheet();
