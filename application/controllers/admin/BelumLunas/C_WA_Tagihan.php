@@ -19,12 +19,13 @@ class C_WA_Tagihan extends CI_Controller
 
     public function KirimWA($id_customer)
     {
-        $data['bulan']      = $this->session->userdata('bulan');
-        $data['tahun']      = $this->session->userdata('tahun');
-        $data['bulanGET']   = $this->session->userdata('bulanGET');
-        $data['tahunGET']   = $this->session->userdata('tahunGET');
+
+        $bulan_show = $this->session->userdata('bulan_GET') != NULL && $this->session->userdata('bulan_GET') != ''
+            ? $this->session->userdata('bulan_GET')
+            : date("n");
 
         //memanggil mysql dari model 
+        $data['bulan']  = $bulan_show;
         $data['DataPelanggan']  = $this->M_BelumLunas->Payment($id_customer);
 
         $this->session->userdata('tahunGET');
@@ -53,10 +54,8 @@ class C_WA_Tagihan extends CI_Controller
         header("location:https://api.whatsapp.com/send?phone=$convertPhone&text=*INFLY NETWORKS* %0a%0a Yth Bapak / Ibu %0a Nama : $name %0a Telepon : $phone %0a%0a *PEMBAYARAN* %0a Tagihan Bulan : $bulan_penagihan %0a Jenis Paket : $nama_paket %0a Harga Paket : Rp.$harga_paket %0a Total : Rp.$harga_paket (Sudah Termasuk PPN) %0a%0a Masa aktif s/d $tanggal_penagihan $bulan_penagihan $tahun_penagihan %0a Keterangan : *Belum Terbayar* %0a%0a *Informasi Tambahan* %0a Pembayaran dapat dilakukan dengan cara : %0a%0a *Transfer BANK* %0a Nomor rekening 0561009449 Bank Jatim atas nama *PT. Urban Teknologi Nusantara* %0a%0a Atau via mobile Banking/QRIS dengan cara Scan barcode QRIS %0a%0a Selesai melakukan pembayaran Mohon dapat *dilampirkan bukti pembayaran* pada balasan pesan ini %0a%0a *Tidak melakukan pembayaran disaat jatuh tempo pukul 19.00 WIB Layanan internet akan otomatis terisolir oleh system.* %0a%0a Batas pembayaran maksimal 3 hari setelah melewati jatuh tempo. %0a%0a Jika ada pertanyaan lebih lanjut, anda dapat langsung membalas pesan ini. %0a%0a Terima Kasih. %0a Hormat Kami. %0a%0a *INFLY NETWORKS*
             ");
 
-        echo "
-            <script>
-               window.location=history.go(-1);
-            </script>
-            ";
+        echo "<script>
+                window.location=history.go(-1);
+            </script>";
     }
 }

@@ -141,8 +141,8 @@ class C_BelumLunas extends CI_Controller
                     Opsi
                 </button>
                 <div class="dropdown-menu text-black" style="background-color:aqua;">
-                    <a onclick="Payment(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"></i> Lunasi Pelanggan</a>
-                    <a onclick="KirimWA(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"></i> Kirim Tagihan</a>
+                    <a onclick="Payment(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"><i class="bi bi-receipt-cutoff"></i> Lunasi Pelanggan</a>
+                    <a onclick="KirimWA(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"><i class="bi bi-whatsapp"></i> Kirim Tagihan</a>
                 </div>
             </div>
             </div>';
