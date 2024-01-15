@@ -52,9 +52,11 @@ class C_EditPelanggan extends CI_Controller
         $id_sales               = $this->input->post('id_sales');
 
         $GetDataPaket           = $this->M_Paket->GetDataPaket($id_paket);
+        $Check_Payment          = $this->M_SudahLunas->Check_Payment($name_pppoe_old);
 
         $price_paket            = $GetDataPaket->price;
         $name_paket             = $GetDataPaket->name;
+        $Order_ID               = $Check_Payment->order_id;
 
         if ($name_paket == 'Free 20 Mbps') {
             $profile_paket      = 'HOME 20 B';
@@ -66,12 +68,13 @@ class C_EditPelanggan extends CI_Controller
 
         $updateDataPayment  = array(
             'nama'          => $name_pppoe,
+            'paket'         => $name_paket,
+            'gross_amount'  => $price_paket
         );
 
         $namePPPOE_old      = array(
-            'nama'          => $name_pppoe_old
+            'order_id'          => $Order_ID
         );
-
 
         // Menyimpan data pelanggan ke dalam array
         $dataPelanggan = array(

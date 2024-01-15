@@ -52,6 +52,7 @@ class C_TambahPelanggan extends CI_Controller
         $biaya_instalasi = $this->input->post('biaya_instalasi');
 
         $kode_name_pppoe = $kode_pppoe . $name_pppoe;
+        $Duplicatekode_name_pppoe = $this->M_Pelanggan->KodeNamePppoe() . $name_pppoe;
 
         $GetDataPaket = $this->M_Paket->GetDataPaket($id_paket);
 
@@ -87,13 +88,13 @@ class C_TambahPelanggan extends CI_Controller
 
         // Menyimpan data pelanggan ke dalam array
         $dataPelangganDuplicate = array(
-            'code_client'    => $this->M_BelumLunas->invoice(),
+            'code_client'    => $this->M_Pelanggan->KodePelangganNew(),
             'phone'          => $phone,
             'latitude'       => 0,
             'longitude'      => 0,
             'name'           => $name,
             'id_paket'       => $id_paket,
-            'name_pppoe'     => $kode_name_pppoe,
+            'name_pppoe'     => $Duplicatekode_name_pppoe,
             'password_pppoe' => $password_pppoe,
             'address'        => $address,
             'email'          => $email,
@@ -123,7 +124,7 @@ class C_TambahPelanggan extends CI_Controller
             'gross_amount'     => $price_paket,
             'biaya_admin'      => '0',
             'biaya_instalasi'  => $biaya_instalasi,
-            'nama'             => $kode_name_pppoe,
+            'nama'             => $Duplicatekode_name_pppoe,
             'paket'            => $name_paket,
             'nama_admin'       => 'Admin Infly',
             'keterangan'       => 'Registrasi Baru',
@@ -142,7 +143,6 @@ class C_TambahPelanggan extends CI_Controller
 
         // Check duplicate code
         $checkDuplicateCode = $this->M_Pelanggan->CheckDuplicateCode($order_id);
-
 
         // Rules form validation
         $this->form_validation->set_rules('name', 'Nama Customer', 'required');
@@ -172,7 +172,7 @@ class C_TambahPelanggan extends CI_Controller
 
                 redirect('admin/DataPelanggan/C_TambahPelanggan');
             } else {
-                if ($order_id != $checkDuplicateCode->order_id) {
+                if ($order_id != $checkDuplicateCode->order_id && $kode_name_pppoe != $checkDuplicate->name_pppoe) {
                     $this->M_CRUD->insertData($dataPelanggan, 'client');
                     $this->M_CRUD->insertData($dataPembayaran, 'data_pembayaran');
                     $this->M_CRUD->insertData($dataPembayaran, 'data_pembayaran_history');
@@ -204,7 +204,7 @@ class C_TambahPelanggan extends CI_Controller
                     // Tambah Pelanggan Ke Mikrotik
                     $api = connect();
                     $api->comm('/ppp/secret/add', [
-                        "name"     => $kode_name_pppoe,
+                        "name"     => $Duplicatekode_name_pppoe,
                         "password" => $password_pppoe,
                         "service"  => "pppoe",
                         "profile"  => $profile_paket,

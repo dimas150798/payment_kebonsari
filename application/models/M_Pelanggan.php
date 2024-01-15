@@ -233,7 +233,7 @@ class M_Pelanggan extends CI_Model
             $dataRowExistingCode = $queryExistingCode->row();
             $existingCode = $dataRowExistingCode->existingCode;
         } else {
-            $existingCode = "kbs0000"; // Default value jika tidak ada data
+            $existingCode = "kbs0000";
         }
 
         // Mengambil angka dari kode yang diperoleh dari database
@@ -241,8 +241,8 @@ class M_Pelanggan extends CI_Model
 
         // Membuat kueri SQL dengan klausa WHERE
         $sql = "SELECT MAX(MID(name_pppoe, 4, 4)) AS invoiceID 
-             FROM client 
-             WHERE MID(name_pppoe, 4, 4) = $existingNumber";
+                FROM client 
+                WHERE MID(name_pppoe, 4, 4) = $existingNumber";
 
         $query = $this->db->query($sql);
 

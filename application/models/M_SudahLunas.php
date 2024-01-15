@@ -241,4 +241,22 @@ class M_SudahLunas extends CI_Model
             return false;
         }
     }
+
+    // Check Pembayaran
+    public function Check_Payment($nama)
+    {
+        $this->db->select('order_id, gross_amount, biaya_admin, biaya_instalasi, nama, paket, nama_admin, keterangan, payment_type, transaction_time, expired_date, bank, va_number, permata_va_number, payment_code, bill_key, biller_code, pdf_url, status_code, created_at');
+        $this->db->where('nama', $nama);
+        $this->db->order_by('order_id', 'DESC');
+
+        $this->db->limit(1);
+        $result = $this->db->get('data_pembayaran');
+
+        return $result->row();
+        if ($result->num_rows() > 0) {
+            return $result->row();
+        } else {
+            return false;
+        }
+    }
 }
