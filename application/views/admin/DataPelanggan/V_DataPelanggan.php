@@ -73,6 +73,7 @@ if (!function_exists('changeDateFormat')) {
                                         <th class="text-center">Nama Paket</th>
                                         <th class="text-center">Tgl Regis</th>
                                         <th class="text-center">Sales</th>
+                                        <th class="text-center">Kode DP</th>
                                         <th class="text-center">Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>
