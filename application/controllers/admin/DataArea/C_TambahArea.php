@@ -33,13 +33,11 @@ class C_TambahArea extends CI_Controller
         //mengambil data post pada view 
         $name         = $this->input->post('name');
         $nama_dp         = $this->input->post('nama_dp');
-        $port_olt         = $this->input->post('port_olt');
 
         //menyimpan data ke dalam array
         $dataArea   = array(
             'name'         => $name,
             'nama_dp'         => $nama_dp,
-            'port_olt'         => $port_olt,
             'created_at'   => date('Y-m-d H:i:s', time())
         );
 

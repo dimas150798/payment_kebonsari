@@ -34,14 +34,12 @@ class C_EditArea extends CI_Controller
         $id           = $this->input->post('id');
         $name         = $this->input->post('name');
         $nama_dp         = $this->input->post('nama_dp');
-        $port_olt         = $this->input->post('port_olt');
 
         //menyimpan data ke dalam array
         $dataArea = array(
             'id'          => $id,
             'name'        => $name,
             'nama_dp'     => $nama_dp,
-            'port_olt'    => $port_olt,
             'updated_at'  => date('Y-m-d H:i:s', time())
         );
 
