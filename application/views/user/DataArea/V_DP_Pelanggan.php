@@ -101,8 +101,9 @@ if (!function_exists('changeDateFormat')) {
                                 <thead>
                                     <tr>
                                         <th width="5%" class="text-center">No</th>
-                                        <th>Nama Customer</th>
+                                        <th>Kode DP</th>
                                         <th>Name PPPOE</th>
+                                        <th>Nama Customer</th>
                                         <th>Alamat</th>
                                         <th>Paket</th>
                                         <!-- <th class="text-center">Action</th> -->

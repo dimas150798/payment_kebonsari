@@ -107,8 +107,9 @@ class C_DP_Pelanggan extends CI_Controller
             foreach ($result as $dataCustomer) {
                 $row = array();
                 $row[] = '<div class="text-center">' . ++$no . '</div>';
-                $row[] = $dataCustomer['name'];
+                $row[] = $dataCustomer['nama_area'];
                 $row[] = $dataCustomer['name_pppoe'];
+                $row[] = $dataCustomer['name'];
                 $row[] = $dataCustomer['address'];
                 $row[] = $dataCustomer['nama_paket'];
 
