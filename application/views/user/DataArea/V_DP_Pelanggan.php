@@ -37,11 +37,12 @@ if (!function_exists('changeDateFormat')) {
                                 <select id="nama_dp" name="nama_dp" class="form-control fw-bold fs-6">
                                     <option value="">Pilih Kode DP :</option>
                                     <?php foreach ($DataArea as $dataArea) : ?>
-                                        <option value="<?php echo $dataArea['name'] ?>" <?= $this->session->userdata('NamaDP_GET') == $dataArea['name'] ? "selected" : null ?>><?php echo $dataArea['name'] ?></option>
+                                        <option value="<?php echo $dataArea['name'] ?>"><?php echo $dataArea['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
+
                                 <!-- Tambahkan tombol Kosongkan -->
-                                <button type="button" class="btn btn-secondary" onclick="clearSelection()">Kosongkan</button>
+                                <!-- <button type="button" class="btn btn-secondary" onclick="clearSelection()">Kosongkan</button> -->
                             </div>
                         </div>
 
@@ -95,7 +96,7 @@ if (!function_exists('changeDateFormat')) {
                             <i class="fas fa-table me-1"></i>
                             Data Customer
                         </div>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <table id="mytable" class="table table-bordered responsive nowrap" style="width:100%">
                                 <thead>
                                     <tr>
@@ -111,11 +112,11 @@ if (!function_exists('changeDateFormat')) {
                                     <!-- Your table body content goes here -->
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
             </div>
+
 
 
         </div>

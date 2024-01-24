@@ -26,6 +26,13 @@
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>assets/js/desaignTables.js"></script>
 
+<script>
+    // Tambahkan fungsi JavaScript untuk mengosongkan pilihan
+    function clearSelection() {
+        document.getElementById('nama_dp').selectedIndex = 0; // Setel indeks pilihan ke 0 (kosong)
+    }
+</script>
+
 <!-- Alert Login -->
 <script>
     <?php if ($this->session->flashdata('LoginBerhasil_icon')) { ?>
