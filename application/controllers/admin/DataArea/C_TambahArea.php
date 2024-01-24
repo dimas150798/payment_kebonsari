@@ -55,23 +55,14 @@ class C_TambahArea extends CI_Controller
             $this->load->view('admin/DataArea/V_TambahArea', $data);
             $this->load->view('template/V_FooterArea', $data);
         } else {
-            if ($name == $checkDuplicate->name) {
 
-                // Notifikasi Duplicate Name 
-                $this->session->set_flashdata('DuplicateName_icon', 'error');
-                $this->session->set_flashdata('DuplicateName_title', 'Gagal Tambah Area');
-                $this->session->set_flashdata('DuplicateName_text', 'Nama area sudah ada');
+            $this->M_CRUD->insertData($dataArea, 'area');
 
-                redirect('admin/DataArea/C_TambahArea');
-            } else {
-                $this->M_CRUD->insertData($dataArea, 'area');
+            // Notifikasi Tambah Berhasil
+            $this->session->set_flashdata('Tambah_icon', 'success');
+            $this->session->set_flashdata('Tambah_title', 'Tambah Data Berhasil');
 
-                // Notifikasi Tambah Berhasil
-                $this->session->set_flashdata('Tambah_icon', 'success');
-                $this->session->set_flashdata('Tambah_title', 'Tambah Data Berhasil');
-
-                redirect('admin/DataArea/C_DataArea');
-            }
+            redirect('admin/DataArea/C_DataArea');
         }
     }
 }
