@@ -123,7 +123,7 @@
                                             <select id="id_area" name="id_area" class="form-control fw-bold fs-6" required>
                                                 <option value="">Pilih Area :</option>
                                                 <?php foreach ($DataArea as $dataArea) : ?>
-                                                    <option value="<?php echo $dataArea['id'] ?>" <?= $data['id_area'] == $dataArea['id'] ? "selected" : null ?>><?php echo $dataArea['name'] ?>
+                                                    <option value="<?php echo $dataArea['id'] ?>" <?= $data['id_area'] == $dataArea['id'] ? "selected" : null ?>><?php echo  $dataArea['nama_dp'] . '/' . $dataArea['name'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>

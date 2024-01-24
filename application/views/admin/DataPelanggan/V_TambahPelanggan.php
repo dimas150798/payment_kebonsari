@@ -146,7 +146,7 @@
                                             <option value="">Pilih Area :</option>
                                             <?php foreach ($DataArea as $dataArea) : ?>
                                                 <option value="<?php echo $dataArea['id']; ?>">
-                                                    <?php echo $dataArea['name']; ?>
+                                                    <?php echo $dataArea['nama_dp'] . '/' . $dataArea['name']; ?>
                                                 </option>
                                             <?php endforeach; ?>
                                         </select>
