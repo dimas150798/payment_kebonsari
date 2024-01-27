@@ -73,9 +73,9 @@ class C_DP_Pelanggan extends CI_Controller
             foreach ($result as $dataCustomer) {
                 $row = array();
                 $row[] = '<div class="text-center">' . ++$no . '</div>';
-                $row[] = $dataCustomer['nama_area'];
                 $row[] = $dataCustomer['name_pppoe'];
                 $row[] = $dataCustomer['name'];
+                $row[] = $dataCustomer['nama_dp'] . '/' . $dataCustomer['nama_area'];
                 $row[] = $dataCustomer['address'];
                 $row[] = $dataCustomer['nama_paket'];
 
@@ -86,8 +86,7 @@ class C_DP_Pelanggan extends CI_Controller
                             Opsi
                         </button>
                         <div class="dropdown-menu text-black" style="background-color:aqua;">
-                            <a onclick="EditDataPelanggan(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"><i class="bi bi-pencil-square"></i> Edit</a>
-                            <a onclick="TerminatedPelanggan(' . $dataCustomer['id'] . ')" class="dropdown-item text-black"><i class="bi bi-trash3-fill"></i> Terminated</a>
+                            <a onclick="EditDataDPPelanggan(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"><i class="bi bi-pencil-square"></i> Edit</a>
                         </div>
                     </div>
                     </div>';
@@ -109,24 +108,23 @@ class C_DP_Pelanggan extends CI_Controller
             foreach ($result as $dataCustomer) {
                 $row = array();
                 $row[] = '<div class="text-center">' . ++$no . '</div>';
-                $row[] = $dataCustomer['nama_area'];
                 $row[] = $dataCustomer['name_pppoe'];
                 $row[] = $dataCustomer['name'];
+                $row[] = $dataCustomer['nama_dp'] . '/' . $dataCustomer['nama_area'];
                 $row[] = $dataCustomer['address'];
                 $row[] = $dataCustomer['nama_paket'];
 
-                // $row[] =
-                //     '<div class="text-center">
-                //     <div class="btn-group">
-                //         <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" data-bs-target="#dropdown" aria-expanded="false" aria-controls="dropdown">
-                //             Opsi
-                //         </button>
-                //         <div class="dropdown-menu text-black" style="background-color:aqua;">
-                //             <a onclick="EditDataPelanggan(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"><i class="bi bi-pencil-square"></i> Edit</a>
-                //             <a onclick="TerminatedPelanggan(' . $dataCustomer['id'] . ')" class="dropdown-item text-black"><i class="bi bi-trash3-fill"></i> Terminated</a>
-                //         </div>
-                //     </div>
-                //     </div>';
+                $row[] =
+                    '<div class="text-center">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" data-bs-target="#dropdown" aria-expanded="false" aria-controls="dropdown">
+                            Opsi
+                        </button>
+                        <div class="dropdown-menu text-black" style="background-color:aqua;">
+                            <a onclick="EditDataDPPelanggan(' . $dataCustomer['id'] . ')"class="dropdown-item text-black"><i class="bi bi-pencil-square"></i> Edit</a>
+                        </div>
+                    </div>
+                    </div>';
                 $data[] = $row;
             }
 

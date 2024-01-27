@@ -212,9 +212,9 @@
 	})
 </script>
 
-<!-- Delete Data Pelanggan -->
+<!-- Delete Data DP Pelanggan -->
 <script>
-	function DeleteDataPelanggan(parameter_id) {
+	function DeleteDPPelanggan(parameter_id) {
 		Swal.fire({
 			title: 'Yakin Melakukan Delete Data ?',
 			text: "Data yang dihapus tidak akan kembali",
@@ -231,9 +231,9 @@
 	}
 </script>
 
-<!-- Edit Data Pelanggan -->
+<!-- Edit Data DP Pelanggan -->
 <script>
-	function EditDataPelanggan(parameter_id) {
+	function EditDataDPPelanggan(parameter_id) {
 		Swal.fire({
 			title: 'Yakin Melakukan Edit Data ?',
 			text: "Data yang diedit tidak akan kembali",
@@ -244,7 +244,7 @@
 			confirmButtonText: 'Ya, Edit Data!'
 		}).then((result) => {
 			if (result.isConfirmed) {
-				window.location.href = "<?php echo site_url('admin/DataPelanggan/C_EditPelanggan/EditPelanggan') ?>/" + parameter_id;
+				window.location.href = "<?php echo site_url('user/DataArea/C_Edit_Pelanggan/EditPelanggan') ?>/" + parameter_id;
 			}
 		})
 	}
