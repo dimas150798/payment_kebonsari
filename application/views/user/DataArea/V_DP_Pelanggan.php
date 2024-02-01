@@ -29,24 +29,36 @@ if (!function_exists('changeDateFormat')) {
             <div class="row mt-3 mb-2">
                 <form class="form-inline" action="<?php echo base_url('user/DataArea/C_DP_Pelanggan') ?>" method=" get">
                     <div class="row">
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold fs-5 p-2">Pilih Nama DP : <span class="text-danger">*</span></label>
+                            <div class="input-group p-2">
+                                <span class="input-group-text bg-secondary"><i class="bi bi-bookmarks-fill text-white"></i></span>
 
+                                <select id="nama_dp" name="nama_dp" class="form-control fw-bold fs-6">
+                                    <option value="">Pilih Kode DP :</option>
+                                    <option value="" disabled required selected>Kota :</option>
+                                    <?php foreach ($DataArea as $value) { ?>
+                                        <option value="<?php echo $value['name']; ?>"><?php echo $value['name']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-md-4">
                             <label class="form-label fw-bold fs-5 p-2">Pilih Kode DP : <span class="text-danger">*</span></label>
                             <div class="input-group p-2">
                                 <span class="input-group-text bg-secondary"><i class="bi bi-bookmarks-fill text-white"></i></span>
-                                <select id="nama_dp" name="nama_dp" class="form-control fw-bold fs-6">
-                                    <option value="">Pilih Kode DP :</option>
-                                    <?php foreach ($DataArea as $dataArea) : ?>
-                                        <option value="<?php echo $dataArea['name'] ?>"><?php echo $dataArea['name'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
 
-                                <!-- Tambahkan tombol Kosongkan -->
-                                <!-- <button type="button" class="btn btn-secondary" onclick="clearSelection()">Kosongkan</button> -->
+                                <select id="kode_dp" name="kode_dp" class="form-control fw-bold fs-6">
+                                    <option value="">Pilih Kode DP :</option>
+                                    <option value="" disabled required selected>Kota :</option>
+                                    <?php foreach ($DataArea as $value) { ?>
+                                        <option value="<?php echo $value['name']; ?>"><?php echo $value['name']; ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
 
-                        <div class="col-md-8 mt-auto justify-content-end d-flex">
+                        <div class="col-md-4 mt-auto justify-content-end d-flex">
                             <button type="submit" class="btn btn-info mt-2 justify-content-start"> <i class="fas fa-eye"></i>
                                 Tampilkan</button>
                         </div>

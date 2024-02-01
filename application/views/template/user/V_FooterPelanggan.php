@@ -321,6 +321,37 @@
 	<?php } ?>
 </script>
 
+<script>
+	$(document).ready(function() {
+
+		// Home 10 Select Kecamatan
+		$('#kotaHome10').on('change', function() {
+			var id_kota = $(this).val();
+
+			if (id_kota == '') {
+				$('#kecamatanHome10').prop('disabled', true);
+			} else {
+				$('#kecamatanHome10').prop('disabled', false);
+				$.ajax({
+					url: "<?php echo base_url('C_Home_10/getKecamatan') ?>",
+					type: "POST",
+					data: {
+						'id_kota': id_kota
+					},
+					dataType: 'json',
+					success: function(data) {
+						$('#kecamatanHome10').html(data);
+					},
+					error: function() {
+						alert('Error..');
+					}
+
+				});
+			}
+		});
+	});
+</script>
+
 </body>
 
 </html>

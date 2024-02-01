@@ -77,6 +77,13 @@ $('#paket_bundling').each(function() {
 });
 $('#nama_dp').each(function() {
     $(this).select2({
+        placeholder: 'Pilih Nama DP :',
+        theme: 'bootstrap-5',
+        dropdownParent: $(this).parent(),
+    });
+});
+$('#kode_dp').each(function() {
+    $(this).select2({
         placeholder: 'Pilih Kode DP :',
         theme: 'bootstrap-5',
         dropdownParent: $(this).parent(),

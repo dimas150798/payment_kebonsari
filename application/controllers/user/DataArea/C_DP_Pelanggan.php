@@ -135,4 +135,38 @@ class C_DP_Pelanggan extends CI_Controller
             $this->output->set_content_type('application/json')->set_output(json_encode($ouput));
         }
     }
+
+    // menampilkan data kecamatan
+    public function getKodeDP()
+    {
+        $id_kota = $this->input->post('id_kota');
+        $kecamatan = $this->PendaftaranModel->ListKecamatan($id_kota);
+
+        if (count($kecamatan) > 0) {
+            $pro_select_box = '';
+            $pro_select_box .= '<option value="" disabled selected>Pilih Kecamatan</option>';
+
+            foreach ($kecamatan as $dataKecamatan) {
+                $pro_select_box .= '<option value="' . $dataKecamatan->id_kecamatan . '">' . $dataKecamatan->nama_kecamatan . '</option>';
+            }
+            echo json_encode($pro_select_box);
+        }
+    }
+
+    // menampilkan data kelurahan
+    public function getKelurahan()
+    {
+        $id_kecamatan = $this->input->post('id_kecamatan');
+        $kelurahan = $this->PendaftaranModel->ListKelurahan($id_kecamatan);
+
+        if (count($kelurahan) > 0) {
+            $pro_select_box = '';
+            $pro_select_box .= '<option value="" disabled selected>Pilih Kelurahan</option>';
+
+            foreach ($kelurahan as $dataKelurahan) {
+                $pro_select_box .= '<option value="' . $dataKelurahan->id_kelurahan . '">' . $dataKelurahan->nama_kelurahan . '</option>';
+            }
+            echo json_encode($pro_select_box);
+        }
+    }
 }
