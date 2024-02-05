@@ -92,7 +92,7 @@ class M_SudahLunas extends CI_Model
             AND MONTH(data_pembayaran.created_at) = '$bulan' AND YEAR(data_pembayaran.created_at) = '$tahun'
     
             WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
-            data_pembayaran.transaction_time IS NOT NULL AND client.stop_date IS NULL 
+            data_pembayaran.transaction_time IS NOT NULL 
             AND paket.name != 'Free 20 Mbps'
     
             ORDER BY DAY(client.start_date) ASC");
