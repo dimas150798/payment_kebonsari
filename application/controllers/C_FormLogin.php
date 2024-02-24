@@ -73,11 +73,11 @@ class C_FormLogin extends CI_Controller
         $toDay = date('Y-m-d');
 
         // Memisahkan Tanggal
-        $pecahDay = explode("-", $toDay);
+        $pecahDay   = explode("-", $toDay);
 
-        $tahun = $pecahDay[0];
-        $bulan = $pecahDay[1];
-        $tanggal = $pecahDay[2];
+        $tahun      = $pecahDay[0];
+        $bulan      = $pecahDay[1];
+        $tanggal    = $pecahDay[2];
 
         // Menampilkan tanggal pada akhir bulan
         $tanggal_akhir = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
