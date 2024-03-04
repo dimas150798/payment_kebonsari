@@ -16,8 +16,8 @@ $months = array(
                 <div class="col-12 col-xl-auto mt-2">
                     <a class="btn btn-warning fw-bold" href="<?php echo base_url('admin/SudahLunas/C_ExportExcel') ?>">Export Excel
                     </a>
-                    <!-- <a class="btn btn-danger fw-bold" href="<?php echo base_url('admin/SudahLunas/C_ExportExcelAll') ?>">Export Excel All
-                    </a> -->
+                    <a class="btn btn-danger fw-bold" href="<?php echo base_url('admin/SudahLunas/C_ExportExcelAll') ?>">Export Excel All
+                    </a>
                 </div>
             </div>
         </div>
