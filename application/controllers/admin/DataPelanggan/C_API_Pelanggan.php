@@ -13,7 +13,7 @@ class C_API_Pelanggan extends CI_Controller
 {
     public function ApiPelanggan()
     {
-        $request = $this->M_Pelanggan->DataPelanggan();
+        $request = $this->M_Pelanggan->DataPelanggan_API();
         echo json_encode($request);
     }
 }
