@@ -208,7 +208,7 @@ class MikrotikModel extends CI_Model
     
             WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
             data_pembayaran.transaction_time IS NULL AND client.stop_date IS NULL
-            AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) >= '$tanggal' AND
+            AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 10 Mbps' AND DAY(client.start_date) >= '$tanggal' AND
             client.disabled = 'false'
     
             GROUP BY client.name_pppoe
@@ -253,7 +253,7 @@ class MikrotikModel extends CI_Model
     
             WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
             data_pembayaran.transaction_time IS NULL AND client.stop_date IS NULL
-            AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) = '$tanggal' AND
+            AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 10 Mbps' AND DAY(client.start_date) = '$tanggal' AND
             client.disabled = 'false'
     
             GROUP BY client.name_pppoe

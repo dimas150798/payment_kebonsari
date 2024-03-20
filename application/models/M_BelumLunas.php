@@ -23,7 +23,7 @@ class M_BelumLunas extends CI_Model
 
         WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
         data_pembayaran.transaction_time IS NULL AND client.stop_date IS NULL
-        AND paket.name != 'Free 20 Mbps'
+        AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 10 Mbps'
 
         GROUP BY client.name_pppoe
         ORDER BY DAY(client.start_date) ASC");
@@ -51,7 +51,7 @@ class M_BelumLunas extends CI_Model
 
         WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
         data_pembayaran.transaction_time IS NULL AND client.stop_date IS NULL
-        AND paket.name != 'Free 20 Mbps'
+        AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 10 Mbps'
 
         GROUP BY client.name_pppoe
         ORDER BY DAY(client.start_date) ASC");
@@ -73,7 +73,7 @@ class M_BelumLunas extends CI_Model
         
         WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir'
         AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
-        AND paket.name != 'Free 20 Mbps'
+        AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 10 Mbps'
         
         ");
 
@@ -176,7 +176,7 @@ class M_BelumLunas extends CI_Model
 
                 WHERE client.start_date BETWEEN '2020-01-01' AND '$day'
                 AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
-                AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) >= '$tanggal'
+                AND paket.name != 'Free 20 Mbps'AND paket.name != 'Free 10 Mbps' AND DAY(client.start_date) >= '$tanggal'
 
                 GROUP BY client.name_pppoe
                 ORDER BY DAY(client.start_date) ASC");
@@ -200,7 +200,7 @@ class M_BelumLunas extends CI_Model
 
                 WHERE client.start_date BETWEEN '2020-01-01' AND '$day'
                 AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
-                AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) = '$tanggal'
+                AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 10 Mbps' AND DAY(client.start_date) = '$tanggal'
 
                 GROUP BY client.name_pppoe
                 ORDER BY DAY(client.start_date) ASC");
@@ -237,7 +237,7 @@ class M_BelumLunas extends CI_Model
 
                 WHERE client.start_date BETWEEN '2020-01-01' AND '$day'
                 AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
-                AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) >= '$tanggal'
+                AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 10 Mbps' AND DAY(client.start_date) >= '$tanggal'
 
                 GROUP BY client.name_pppoe
                 ORDER BY DAY(client.start_date) ASC");
@@ -261,7 +261,7 @@ class M_BelumLunas extends CI_Model
 
                 WHERE client.start_date BETWEEN '2020-01-01' AND '$day'
                 AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
-                AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) = '$tanggal'
+                AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 10 Mbps' AND DAY(client.start_date) = '$tanggal'
 
                 GROUP BY client.name_pppoe
                 ORDER BY DAY(client.start_date) ASC");
@@ -291,7 +291,7 @@ class M_BelumLunas extends CI_Model
                 
                 WHERE client.start_date BETWEEN '2020-01-01' AND '$day'
                 AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
-                AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) >= '$tanggal'
+                AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 10 Mbps' AND DAY(client.start_date) >= '$tanggal'
                 
                 ");
 
@@ -313,7 +313,7 @@ class M_BelumLunas extends CI_Model
                 
                 WHERE client.start_date BETWEEN '2020-01-01' AND '$day'
                 AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
-                AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) = '$tanggal'
+                AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 10 Mbps' AND DAY(client.start_date) = '$tanggal'
                 
                 ");
 
@@ -357,7 +357,7 @@ class M_BelumLunas extends CI_Model
 
         WHERE client.start_date BETWEEN '2020-01-01' AND '$DateStart'
         AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
-        AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) BETWEEN '$tanggalStart' AND '$tanggalEnd'
+        AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 10 Mbps' AND DAY(client.start_date) BETWEEN '$tanggalStart' AND '$tanggalEnd'
 
         ORDER BY DAY(client.start_date) ASC");
 
@@ -394,7 +394,7 @@ class M_BelumLunas extends CI_Model
 
         WHERE client.start_date BETWEEN '2020-01-01' AND '$DateStart'
         AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
-        AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) BETWEEN '$tanggalStart' AND '$tanggalEnd'
+        AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) BETWEEN '$tanggalStart' AND '$tanggalEnd'
 
         ORDER BY DAY(client.start_date) ASC");
 
@@ -426,7 +426,7 @@ class M_BelumLunas extends CI_Model
 
         WHERE client.start_date BETWEEN '2020-01-01' AND '$DateStart'
         AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
-        AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) BETWEEN '$tanggalStart' AND '$tanggalEnd'
+        AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) BETWEEN '$tanggalStart' AND '$tanggalEnd'
 
         ORDER BY DAY(client.start_date) ASC
         ");
